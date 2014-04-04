@@ -1,0 +1,6 @@
+*.conf
+*.sample
+*.key
+*.pem
+/unsigned
+/signed
