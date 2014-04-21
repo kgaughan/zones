@@ -2,7 +2,7 @@ $ORIGIN	stereochro.me.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2014041000 ; serial
+				2014041900 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -19,3 +19,6 @@ www		CNAME	@
 
 default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDUGhukj8Ww4pu2KevFCF+OixPpX7gjWGg3cYjVGnKmUolByvYG09HJQs1QvRfFU8ArqLW+UKDcGCOgvcJboKu+qtotZ6IxbX4AiisZP9lB9hqxvrXQ8rVpVR6gmEKfJhReUYPGLRQZsHJbxW2TNIXWV3TS2/w2ei+Ns5qW/C74jwIDAQAB"
 _adsp._domainkey	TXT	"dkim=unknown"
+
+; Services
+_submission._tcp    SRV 0 1 587 lir.talideon.com.
