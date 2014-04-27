@@ -2,7 +2,7 @@ $ORIGIN	stereochro.me.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2014041900 ; serial
+				2014042500 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -13,6 +13,8 @@ $TTL	3600
 		A		78.153.202.217
 		AAAA	2a01:a8:201::217
 		MX		40 lir.talideon.com.
+		; The TXT record is needed for dumber mailservers.
+		TXT		"v=spf1 a mx -all"
 		SPF		"v=spf1 a mx -all"
 
 www		CNAME	@
@@ -21,4 +23,5 @@ default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ
 _adsp._domainkey	TXT	"dkim=unknown"
 
 ; Services
-_submission._tcp    SRV 0 1 587 lir.talideon.com.
+_submission._tcp    SRV 0 1 587  mail.talideon.com.
+_sieve._tcp         SRV 0 1 4190 mail.talideon.com.
