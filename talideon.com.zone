@@ -2,7 +2,7 @@ $ORIGIN		talideon.com.
 $TTL		3600
 
 @			SOA		ns1 k.stereochro.me. (
-					2014051602 ; serial
+					2014060701 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
@@ -12,7 +12,7 @@ $TTL		3600
 			NS		ns2
 			A		78.153.202.217
 			AAAA	2a01:a8:201::217
-			MX		40 lir.talideon.com.
+			MX		40 mail.talideon.com.
 			; The TXT record is needed for dumber mailservers.
 			TXT		"v=spf1 a mx -all"
 			SPF		"v=spf1 a mx -all"
@@ -32,6 +32,9 @@ lir			AAAA	2a01:a8:201::217
 bethisad	CNAME	@
 mail		CNAME	@
 mirrors		CNAME	@
+
+; My home network.
+etain       A       213.79.53.114
 
 ; Services
 _submission._tcp    SRV 0 1 587  mail.talideon.com.
