@@ -4,4 +4,4 @@ zone:
 	name: "$(basename $zonefile .zone)"
 	include-pattern: "master"
 EOZ
-done > $(dirname $0)/zones.conf
+done > $(dirname $0)/../zones.conf

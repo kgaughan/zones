@@ -1,6 +1,2 @@
-*.conf
-*.sample
-*.key
-*.pem
-/unsigned
-/signed
+# Zones ot be ignored.
+niley.net.zone
