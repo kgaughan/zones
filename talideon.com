@@ -1,0 +1,43 @@
+$ORIGIN		talideon.com.
+$TTL		3600
+
+@			SOA		ns1 k.stereochro.me. (
+					2014060701 ; serial
+					6h         ; refresh
+					1h         ; retry
+					1w         ; expire
+					1d         ; minimum
+					)
+			NS		ns1
+			NS		ns2
+			A		78.153.202.217
+			AAAA	2a01:a8:201::217
+			MX		40 mail.talideon.com.
+			; The TXT record is needed for dumber mailservers.
+			TXT		"v=spf1 a mx -all"
+			SPF		"v=spf1 a mx -all"
+www			CNAME	@
+
+; Nameservers
+ns1			A		78.153.202.217
+ns1			AAAA	2a01:a8:201::217
+ns2			A		188.40.129.84
+ns2			AAAA	2a01:4f8:101:23a4::2
+
+; Server itself.
+lir			A		78.153.202.217
+lir			AAAA	2a01:a8:201::217
+
+; Aliases.
+bethisad	CNAME	@
+mail		CNAME	@
+mirrors		CNAME	@
+
+; My home network.
+etain       A       213.79.53.114
+
+; Services
+_submission._tcp    SRV 0 1 587  mail.talideon.com.
+_sieve._tcp         SRV 0 1 4190 mail.talideon.com.
+
+; vim:set filetype=dns:

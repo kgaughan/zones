@@ -1,0 +1,29 @@
+$ORIGIN	stereochro.me.
+$TTL	3600
+
+@		SOA		ns1.talideon.com. k.stereochro.me. (
+				2014060701 ; serial
+				6h         ; refresh
+				1h         ; retry
+				1w         ; expire
+				1d         ; minimum
+				)
+		NS		ns1.talideon.com.
+		NS		ns2.talideon.com.
+		A		78.153.202.217
+		AAAA	2a01:a8:201::217
+		MX		40 mail.talideon.com.
+		; The TXT record is needed for dumber mailservers.
+		TXT		"v=spf1 a mx -all"
+		SPF		"v=spf1 a mx -all"
+
+www		CNAME	@
+
+default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDUGhukj8Ww4pu2KevFCF+OixPpX7gjWGg3cYjVGnKmUolByvYG09HJQs1QvRfFU8ArqLW+UKDcGCOgvcJboKu+qtotZ6IxbX4AiisZP9lB9hqxvrXQ8rVpVR6gmEKfJhReUYPGLRQZsHJbxW2TNIXWV3TS2/w2ei+Ns5qW/C74jwIDAQAB"
+_adsp._domainkey	TXT	"dkim=unknown"
+
+; Services
+_submission._tcp    SRV 0 1 587  mail.talideon.com.
+_sieve._tcp         SRV 0 1 4190 mail.talideon.com.
+
+; vim:set filetype=dns:
