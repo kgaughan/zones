@@ -2,7 +2,7 @@ $ORIGIN		talideon.com.
 $TTL		3600
 
 @			SOA		ns1 k.stereochro.me. (
-					2015021601 ; serial
+					2015022001 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
@@ -17,6 +17,9 @@ $TTL		3600
 			TXT		"v=spf1 a mx -all"
 			SPF		"v=spf1 a mx -all"
 www			CNAME	@
+
+mail		A		78.153.202.217
+mail		AAAA	2a01:a8:201::217
 
 ; Nameservers
 ns1			A		78.153.202.217
@@ -37,7 +40,6 @@ lir			SSHFP 3 2 8efc13f18be81ec12a09e36c7b0b153bccea4f00b5102fc23ddd5042f5a225d3
 
 ; Aliases.
 bethisad	CNAME	@
-mail		CNAME	@
 mirrors		CNAME	@
 
 ; My home network.
