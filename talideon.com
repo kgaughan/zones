@@ -51,7 +51,7 @@ lir			SSHFP	3 2 8efc13f18be81ec12a09e36c7b0b153bccea4f00b5102fc23ddd5042f5a225d3
 ; My home network.
 etain		A		213.79.53.114
 
-; My Digital Ocean VM. It's a bit silly that it has not AAAA address.
+; My Digital Ocean VM.
 cian		A		45.55.149.240
 cian		AAAA	2604:a880:800:10::716:6001
 
