@@ -2,7 +2,7 @@ $ORIGIN	stereochro.me.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2015020601 ; serial
+				2015040111 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -24,7 +24,17 @@ default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ
 _adsp._domainkey	TXT	"dkim=unknown"
 
 ; Services
-_submission._tcp    SRV 0 1 587  mail.talideon.com.
-_sieve._tcp         SRV 0 1 4190 mail.talideon.com.
+_imap._tcp          SRV     0 1 143  mail.talideon.com.
+_imaps._tcp			SRV		0 1 993  mail.talideon.com.
+_submission._tcp	SRV		0 1 587  mail.talideon.com.
+_sieve._tcp			SRV		0 1 4190 mail.talideon.com.
+_xmpp-client._tcp	SRV		0 1 5222 stereochro.me.
+_xmpp-server._tcp	SRV		0 1 5269 stereochro.me.
+
+; DANE
+_443._tcp			TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
+_443._tcp.www		TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
+_5222._tcp			TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
+_5269._tcp			TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
 
 ; vim:set filetype=dns:
