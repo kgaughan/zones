@@ -2,7 +2,7 @@ $ORIGIN		talideon.com.
 $TTL		3600
 
 @			SOA		ns1 k.stereochro.me. (
-					2015040401 ; serial
+					2015041000 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
@@ -81,11 +81,14 @@ _xmpp-client._tcp	SRV		0 1 5222 talideon.com.
 _xmpp-server._tcp	SRV		0 1 5269 talideon.com.
 
 ; DANE
-_25._tcp.mail		TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
+; According to https://tools.ietf.org/html/draft-ietf-dane-smtp-with-dane-15,
+; for SMTP, we can't use PKIX-EE (1) and have to use DANE-EE (3) as the whole
+; certificate chain isn't validated for opportunistic DANE TLS.
+_25._tcp.mail		TLSA	3 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
 _443._tcp			TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
 _143._tcp.mail		TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
 _443._tcp.mail		TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
-_587._tcp.mail		TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
+_587._tcp.mail		TLSA	3 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
 _993._tcp.mail		TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
 _4190._tcp.mail		TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
 _5222._tcp			TLSA	1 0 1 74271471a968933deb5a413dcf82dd2d973c186aff1c1607f1b3b8997b467cce
