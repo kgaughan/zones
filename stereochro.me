@@ -2,7 +2,7 @@ $ORIGIN	stereochro.me.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2015040400 ; serial
+				2015041300 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -33,9 +33,9 @@ _xmpp-client._tcp	SRV		0 1 5222 stereochro.me.
 _xmpp-server._tcp	SRV		0 1 5269 stereochro.me.
 
 ; DANE
-_443._tcp			TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
-_443._tcp.www		TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
-_5222._tcp			TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
-_5269._tcp			TLSA	1 0 1 cdb027187d99c83dd65869522896108d882d1be9152809cd38a683a2a6ce9d9f
+_443._tcp			TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
+_443._tcp.www		TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
+_5222._tcp			TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
+_5269._tcp			TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
 
 ; vim:set filetype=dns:
