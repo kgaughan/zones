@@ -2,7 +2,7 @@ $ORIGIN	hascowanresignedyet.com.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2014013002 ; serial
+				2015051101 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -11,8 +11,10 @@ $TTL	3600
 		NS		ns1.talideon.com.
 		NS		ns2.talideon.com.
 		NS		ns3.talideon.com.
+		NS		ns4.talideon.com.
 		A		78.153.202.217
 		AAAA	2a01:a8:201::217
+		TXT		"v=spf1 -all"
 		SPF		"v=spf1 -all"
 www		CNAME	@
 
