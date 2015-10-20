@@ -2,7 +2,7 @@ $ORIGIN		talideon.com.
 $TTL		3600
 
 @			SOA		ns1 k.stereochro.me. (
-					2015041501 ; serial
+					2015101400 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
@@ -31,8 +31,8 @@ ns1			AAAA	2a01:a8:201::217
 ns2			A		188.40.129.84
 ns2			AAAA	2a01:4f8:101:23a4::2
 ; ns2.blacknightsolutions.com
-ns3			A		82.96.97.64
-ns3			AAAA	2001:1bc0:ab:3::2
+ns3			A		78.153.202.4
+ns3			AAAA	2a01:a8:dc2:33::33
 ; cian.talideon.com
 ns4			A		45.55.149.240
 ns4			AAAA	2604:a880:800:10::716:6001
