@@ -2,7 +2,7 @@ $ORIGIN		talideon.com.
 $TTL		3600
 
 @			SOA		ns1 k.stereochro.me. (
-					2015101400 ; serial
+					2015102000 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
@@ -44,12 +44,12 @@ lir			AAAA	2a01:a8:201::217
 lir			TXT		"v=spf1 a mx -all"
 lir			SPF		"v=spf1 a mx -all"
 
-lir			SSHFP	1 1 f08cd3d31d3be6bc2687a38f0edc7881e99bc207
-lir			SSHFP	1 2 b4d609295c470eafa42f8d3e2f94765a5523a0d9b1bc07e01ab97bcad17e0cb3
-lir			SSHFP	2 1 17716e30fef9653801fc1a42deba46624e5d9491
-lir			SSHFP	2 2 5abfbfa16b91c9fac1683656743743f0aedab0e24cf78cf0e60df7b768d2fd25
-lir			SSHFP	3 1 873c8651b2daf6cfc8273dadbf77b46edc181a42
-lir			SSHFP	3 2 8efc13f18be81ec12a09e36c7b0b153bccea4f00b5102fc23ddd5042f5a225d3
+lir			SSHFP	1 1 33f52ffa59079b25a3d2e41b05403383016f586a
+lir			SSHFP	1 2 1b3291d1d27b4e67e1c56c5943783c56280c590867a79361a4f847c7fc0bf262
+lir			SSHFP	2 1 27dfe15fc68ae916d5be965ec6ab556638b3e886
+lir			SSHFP	2 2 9212211b7b73756c8a13c10ed09e38f57018ffcdc38cc9aee5f7824238e2b49d
+lir			SSHFP	3 1 78fc530683dfb7c622794aff53385d902c3acbd3
+lir			SSHFP	3 2 d655e85051012ad4a23fbd1a67032abfaac4748169445a22a70597961225a484
 
 ; My home network.
 etain		A		213.79.53.114
@@ -61,12 +61,13 @@ cian		AAAA	2604:a880:800:10::716:6001
 cian		TXT		"v=spf1 a:lir.talideon.com a mx -all"
 cian		SPF		"v=spf1 a:lir.talideon.com a mx -all"
 
-cian		SSHFP	1 1 d190104b6a82cdf1fc24bc1597c17a05c36c948b
-cian		SSHFP	1 2 32419935f517b1b54bd344a4eb2bd12122c2ad120b483c39a80b2013a0e8f351
-cian		SSHFP	2 1 467400854e4592f5962af804f484ed338572c143
-cian		SSHFP	2 2 5eb68371949219790f6af84f307b66e171c731f06ffcac4c26d3311e84ab5f2b
-cian		SSHFP	3 1 829d076fe4593963d769a632c880bdaa4af4f618
-cian		SSHFP	3 2 45a879ad33d36e640e11a02e10413a9d9e30ac74d1b05530172353d62ac8b477
+
+cian		SSHFP	1 1 b3c27d0efecee20d4c00e3f5f3cd2a61ca02ad82
+cian		SSHFP	1 2 7ad47957fbb90f54a299f29efbde82066f64744cb5c50e106af7da0d082821cf
+cian		SSHFP	2 1 9d3b92fd93e5f8803c2a889d73806a84bfc7d670
+cian		SSHFP	2 2 f8ef86bb095339039496b875ae2dfc8a27bb6b0f8d32f40990911d3d8e935c1d
+cian		SSHFP	3 1 2f1baf6bf8d66c0615a205b7628475a419563f4b
+cian		SSHFP	3 2 21ec08609d41e94cad66a2cc06b8b47bb753a2400aeba2221ed9938979f6436b
 
 ; Aliases.
 bethisad	CNAME	@
