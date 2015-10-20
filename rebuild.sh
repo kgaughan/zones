@@ -12,14 +12,20 @@ get_zones () {
 	find $ODS_ROOT/signed -depth 1 -type f
 }
 
+write_zone () {
+	cat <<EOZ
+zone:
+	name: "$1"
+	include-pattern: "master"
+EOZ
+}
+
 get_zones | while read zone; do
 	ln -s -f $zone $NSD_ZONES/$(basename $zone).zone
 done
 
 for zonefile in $NSD_ZONES/*; do
-	cat <<EOZ
-zone:
-	name: "$(basename $zonefile .zone)"
-	include-pattern: "master"
-EOZ
-done > /usr/local/etc/nsd/zones.conf
+	if test -L $zonefile; then
+		write_zone $(basename $zonefile .zone)
+	fi
+done > $NSD_ZONES/../zones.conf
