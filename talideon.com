@@ -2,7 +2,7 @@ $ORIGIN		talideon.com.
 $TTL		3600
 
 @			SOA		ns1 k.stereochro.me. (
-					2015102000 ; serial
+					2016022900 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
@@ -18,7 +18,11 @@ $TTL		3600
 			; The TXT record is needed for dumber mailservers.
 			TXT		"v=spf1 ip4:45.55.149.240 ip6:2604:a880:800:10::716:6001/64 a mx -all"
 			SPF		"v=spf1 ip4:45.55.149.240 ip6:2604:a880:800:10::716:6001/64 a mx -all"
+
 www			CNAME	@
+repos		CNAME	@
+projects	CNAME	@
+reader		CNAME	@
 
 mail		A		78.153.202.217
 mail		AAAA	2a01:a8:201::217
@@ -74,7 +78,7 @@ bethisad	CNAME	@
 mirrors		CNAME	@
 
 ; Services
-_imap._tcp          SRV     0 1 143  mail.talideon.com.
+_imap._tcp			SRV		0 1 143  mail.talideon.com.
 _imaps._tcp			SRV		0 1 993  mail.talideon.com.
 _submission._tcp	SRV		0 1 587  mail.talideon.com.
 _sieve._tcp			SRV		0 1 4190 mail.talideon.com.
@@ -82,17 +86,26 @@ _xmpp-client._tcp	SRV		0 1 5222 talideon.com.
 _xmpp-server._tcp	SRV		0 1 5269 talideon.com.
 
 ; DANE
-_443._tcp			TLSA	1 0 1 8dc0411a9b721ddbca53f37df9e1269aab30a3c43d1b54692f5e9b550cce41c3
-_443._tcp.www		TLSA	1 0 1 8dc0411a9b721ddbca53f37df9e1269aab30a3c43d1b54692f5e9b550cce41c3
+; According to https://tools.ietf.org/html/rfc7672, for SMTP, we can't use
+; PKIX-EE (1) and have to use DANE-EE (3) as the whole certificate chain isn't
+; validated for opportunistic DANE TLS.
+; Also see:
+; https://community.letsencrypt.org/t/please-avoid-3-0-1-and-3-0-2-dane-tlsa-records-with-le-certificates/7022
+; https://www.internetsociety.org/deploy360/blog/2016/01/lets-encrypt-certificates-for-mail-servers-and-dane-part-1-of-2/
+; This contains a good explanation of the flags, for when I inevitably forget:
+; https://netfuture.ch/2013/06/how-to-create-dnssec-dane-tlsa-entries/
+_dane				TLSA	2 1 1 cd9af344336928a5d4c42157834a509423eb1a8ab31d00aba43ebb81bb3243a4
+_dane				TLSA	3 1 1 cd9af344336928a5d4c42157834a509423eb1a8ab31d00aba43ebb81bb3243a4
+_25._tcp.mail		CNAME	_dane ; SMTP
+_143._tcp.mail		CNAME	_dane ; IMAP + STARTTLS
+_443._tcp			CNAME	_dane ; HTTPS (talideon.com)
+_443._tcp.www		CNAME	_dane ; HTTPS (www.talideon.com)
+_443._tcp.mail		CNAME	_dane ; HTTPS (mail.talideon.com)
+_587._tcp.mail		CNAME	_dane ; SMTP Submission
+_993._tcp.mail		CNAME	_dane ; IMAPS
+_4190._tcp.mail		CNAME	_dane ; Sieve
+; Switch these over some time.
 _5222._tcp			TLSA	1 0 1 8dc0411a9b721ddbca53f37df9e1269aab30a3c43d1b54692f5e9b550cce41c3
 _5269._tcp			TLSA	1 0 1 8dc0411a9b721ddbca53f37df9e1269aab30a3c43d1b54692f5e9b550cce41c3
-; According to https://tools.ietf.org/html/draft-ietf-dane-smtp-with-dane-15,
-; for SMTP, we can't use PKIX-EE (1) and have to use DANE-EE (3) as the whole
-; certificate chain isn't validated for opportunistic DANE TLS.
-_25._tcp.mail		TLSA	3 0 1 4a3ef37db926db56145d341bb72308d6edea982d88c19806c15580a1c94f77d4
-_143._tcp.mail		TLSA	3 0 1 4a3ef37db926db56145d341bb72308d6edea982d88c19806c15580a1c94f77d4
-_587._tcp.mail		TLSA	3 0 1 4a3ef37db926db56145d341bb72308d6edea982d88c19806c15580a1c94f77d4
-_993._tcp.mail		TLSA	3 0 1 4a3ef37db926db56145d341bb72308d6edea982d88c19806c15580a1c94f77d4
-_4190._tcp.mail		TLSA	3 0 1 4a3ef37db926db56145d341bb72308d6edea982d88c19806c15580a1c94f77d4
 
 ; vim:set filetype=dns:

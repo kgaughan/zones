@@ -2,7 +2,7 @@ $ORIGIN	stereochro.me.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2015101400 ; serial
+				2016022900 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -33,9 +33,13 @@ _xmpp-client._tcp	SRV		0 1 5222 stereochro.me.
 _xmpp-server._tcp	SRV		0 1 5269 stereochro.me.
 
 ; DANE
-_443._tcp			TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
-_443._tcp.www		TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
-_5222._tcp			TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
-_5269._tcp			TLSA	1 0 1 6f6bd681759288c084096179973fd2d2d058e0c26519c974b03a31e0b0b5cf88
+; See notes in the zonefile for talideon.com.
+_dane				TLSA	2 1 1 32890ffa3e81a780b6b3ed5b7cd7f211b0d31673b31889dd18505cab417b3e95
+_dane				TLSA	3 1 1 32890ffa3e81a780b6b3ed5b7cd7f211b0d31673b31889dd18505cab417b3e95
+_443._tcp			CNAME	_dane
+_443._tcp			CNAME	_dane
+_443._tcp.www		CNAME	_dane
+_5222._tcp			CNAME	_dane
+_5269._tcp			CNAME	_dane
 
 ; vim:set filetype=dns:

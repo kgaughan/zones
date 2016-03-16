@@ -2,7 +2,7 @@ $ORIGIN	canthack.it.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2015051101 ; serial
+				2016030101 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -16,6 +16,9 @@ $TTL	3600
 		AAAA	2a01:a8:201::217
 		TXT		"v=spf1 -all"
 		SPF		"v=spf1 -all"
+
 www		CNAME	@
+
+i.canthack.it.		CNAME	canthack.it.
 
 ; vim:set filetype=dns:
