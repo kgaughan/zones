@@ -1,19 +1,21 @@
 $ORIGIN	roguebeauty.org.
 $TTL	3600
 
-@		SOA		ns1.talideon.com. k.stereochro.me. (
-				2015051101 ; serial
+@		SOA		ns4.talideon.com. k.stereochro.me. (
+				2016031600 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
 				1d         ; minimum
 				)
-		NS		ns1.talideon.com.
-		NS		ns2.talideon.com.
+;		NS		ns1.talideon.com.
+;		NS		ns2.talideon.com.
 		NS		ns3.talideon.com.
 		NS		ns4.talideon.com.
-		A		78.153.202.217
-		AAAA	2a01:a8:201::217
+;		A		78.153.202.217
+;		AAAA	2a01:a8:201::217
+		A		45.55.149.240
+		AAAA	2604:a880:800:10::716:6001
 		MX		40 mail.talideon.com.
 		; The TXT record is needed for dumber mailservers.
 		TXT		"v=spf1 a mx -all"

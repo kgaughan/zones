@@ -1,19 +1,21 @@
 $ORIGIN		talideon.com.
 $TTL		3600
 
-@			SOA		ns1 k.stereochro.me. (
-					2016022900 ; serial
+@			SOA		ns4 k.stereochro.me. (
+					2016031601 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
 					1d         ; minimum
 					)
-			NS		ns1
-			NS		ns2
+;			NS		ns1
+;			NS		ns2
 			NS		ns3
 			NS		ns4
-			A		78.153.202.217
-			AAAA	2a01:a8:201::217
+;			A		78.153.202.217
+;			AAAA	2a01:a8:201::217
+			A		45.55.149.240
+			AAAA	2604:a880:800:10::716:6001
 			MX		40 mail.talideon.com.
 			; The TXT record is needed for dumber mailservers.
 			TXT		"v=spf1 ip4:45.55.149.240 ip6:2604:a880:800:10::716:6001/64 a mx -all"
@@ -24,8 +26,10 @@ repos		CNAME	@
 projects	CNAME	@
 reader		CNAME	@
 
-mail		A		78.153.202.217
-mail		AAAA	2a01:a8:201::217
+;mail		A		78.153.202.217
+;mail		AAAA	2a01:a8:201::217
+mail		A		45.55.149.240
+mail		AAAA	2604:a880:800:10::716:6001
 
 ; Nameservers
 ; lir.talideon.com
