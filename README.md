@@ -1,4 +1,4 @@
 zones
 =====
 
-DNS zones on lir.talideon.com
+DNS zones on cian.talideon.com
