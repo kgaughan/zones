@@ -2,28 +2,26 @@ $ORIGIN	stereochro.me.
 $TTL	3600
 
 @		SOA		ns4.talideon.com. k.stereochro.me. (
-				2016031601 ; serial
+				2016031802 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
 				1d         ; minimum
 				)
 ;		NS		ns1.talideon.com.
-;		NS		ns2.talideon.com.
+		NS		ns2.talideon.com.
 		NS		ns3.talideon.com.
 		NS		ns4.talideon.com.
-;		A		78.153.202.217
-;		AAAA	2a01:a8:201::217
 		A		45.55.149.240
 		AAAA	2604:a880:800:10::716:6001
 		MX		40 mail.talideon.com.
 		; The TXT record is needed for dumber mailservers.
-		TXT		"v=spf1 ip4:45.55.149.240 ip6:2604:a880:800:10::716:6001/64 a mx -all"
-		SPF		"v=spf1 ip4:45.55.149.240 ip6:2604:a880:800:10::716:6001/64 a mx -all"
+		TXT		"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
+		SPF		"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
 
 www		CNAME	@
 
-default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDUGhukj8Ww4pu2KevFCF+OixPpX7gjWGg3cYjVGnKmUolByvYG09HJQs1QvRfFU8ArqLW+UKDcGCOgvcJboKu+qtotZ6IxbX4AiisZP9lB9hqxvrXQ8rVpVR6gmEKfJhReUYPGLRQZsHJbxW2TNIXWV3TS2/w2ei+Ns5qW/C74jwIDAQAB"
+default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCBUE1JLq4qpkkTKOtRqKQmKgJB0d+5B+kq1jW1ekZScz64UBhs2lF1Rmj3PWzcerSszwLvaZu329ynHIbEJT8Utk9v3Mt55Z7Svzv7Fub/jLIiDsQjlUhtpBzjB0P2gJtia53HmAO44C1eZdK+fU1Gqst3hcPRX9N/GM9umWElQIDAQAB"
 _adsp._domainkey	TXT	"dkim=unknown"
 
 ; Services
@@ -44,4 +42,4 @@ _443._tcp.www		CNAME	_dane
 _5222._tcp			CNAME	_dane
 _5269._tcp			CNAME	_dane
 
-; vim:set filetype=dns:
+; vim:set filetype=dns noet ts=4 sw=4 sts=4:

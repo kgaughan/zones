@@ -2,32 +2,28 @@ $ORIGIN		talideon.com.
 $TTL		3600
 
 @			SOA		ns4 k.stereochro.me. (
-					2016031601 ; serial
+					2016031802 ; serial
 					6h         ; refresh
 					1h         ; retry
 					1w         ; expire
 					1d         ; minimum
 					)
 ;			NS		ns1
-;			NS		ns2
+			NS		ns2
 			NS		ns3
 			NS		ns4
-;			A		78.153.202.217
-;			AAAA	2a01:a8:201::217
 			A		45.55.149.240
 			AAAA	2604:a880:800:10::716:6001
 			MX		40 mail.talideon.com.
 			; The TXT record is needed for dumber mailservers.
-			TXT		"v=spf1 ip4:45.55.149.240 ip6:2604:a880:800:10::716:6001/64 a mx -all"
-			SPF		"v=spf1 ip4:45.55.149.240 ip6:2604:a880:800:10::716:6001/64 a mx -all"
+			TXT		"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
+			SPF		"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
 
 www			CNAME	@
 repos		CNAME	@
 projects	CNAME	@
 reader		CNAME	@
 
-;mail		A		78.153.202.217
-;mail		AAAA	2a01:a8:201::217
 mail		A		45.55.149.240
 mail		AAAA	2604:a880:800:10::716:6001
 
@@ -35,9 +31,9 @@ mail		AAAA	2604:a880:800:10::716:6001
 ; lir.talideon.com
 ns1			A		78.153.202.217
 ns1			AAAA	2a01:a8:201::217
-; bunsen.moybella.net
-ns2			A		188.40.129.84
-ns2			AAAA	2a01:4f8:101:23a4::2
+; statler.moybella.net
+ns2			A		37.187.57.205
+ns2			AAAA	2001:41d0:b:5cd::205
 ; ns2.blacknightsolutions.com
 ns3			A		78.153.202.4
 ns3			AAAA	2a01:a8:dc2:33::33
@@ -66,8 +62,8 @@ etain		A		213.79.53.114
 cian		A		45.55.149.240
 cian		AAAA	2604:a880:800:10::716:6001
 
-cian		TXT		"v=spf1 a:lir.talideon.com a mx -all"
-cian		SPF		"v=spf1 a:lir.talideon.com a mx -all"
+cian		TXT		"v=spf1 a mx -all"
+cian		SPF		"v=spf1 a mx -all"
 
 
 cian		SSHFP	1 1 b3c27d0efecee20d4c00e3f5f3cd2a61ca02ad82
@@ -112,4 +108,4 @@ _4190._tcp.mail		CNAME	_dane ; Sieve
 _5222._tcp			TLSA	1 0 1 8dc0411a9b721ddbca53f37df9e1269aab30a3c43d1b54692f5e9b550cce41c3
 _5269._tcp			TLSA	1 0 1 8dc0411a9b721ddbca53f37df9e1269aab30a3c43d1b54692f5e9b550cce41c3
 
-; vim:set filetype=dns:
+; vim:set filetype=dns noet ts=4 sw=4 sts=4:

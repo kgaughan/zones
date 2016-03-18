@@ -2,14 +2,14 @@ $ORIGIN	canthack.it.
 $TTL	3600
 
 @		SOA		ns4.talideon.com. k.stereochro.me. (
-				2016031600 ; serial
+				2016031800 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
 				1d         ; minimum
 				)
 ;		NS		ns1.talideon.com.
-;		NS		ns2.talideon.com.
+		NS		ns2.talideon.com.
 		NS		ns3.talideon.com.
 		NS		ns4.talideon.com.
 		A		45.55.149.240
