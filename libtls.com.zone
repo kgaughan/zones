@@ -2,7 +2,7 @@ $ORIGIN	libtls.com.
 $TTL	3600
 
 @		SOA		ns1.talideon.com. k.stereochro.me. (
-				2015051101 ; serial
+				2016031900 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -16,6 +16,7 @@ $TTL	3600
 		AAAA	2a01:a8:201::217
 		TXT		"v=spf1 -all"
 		SPF		"v=spf1 -all"
+		TXT		"47433829643e472ab2cffb30c2c064a3f0b71ed6"
 www		CNAME	@
 
 ; vim:set filetype=dns:
