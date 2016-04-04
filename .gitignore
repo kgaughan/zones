@@ -1,2 +1,33 @@
 *.db
 .*.sw?
+
+# The comments starting with '#!' mark parsed sections. What follows is a
+# directive followed by a parameter string. Sections are terminated by an
+# empty line or the end of the file.
+#
+# Currently, there is only one directive, 'template', which takes the name of
+# a template to use for generating the given zone files. The argument is
+# treated as a path whose last section is the name of a zone with '.zone' at
+# the end.
+
+#!template: parked.zone.jinja
+/affilians.com.zone
+/affilians.net.zone
+/davidwalkerandme.com.zone
+/friiware.com.zone
+/hascowanresignedyet.com.zone
+/hascowenresignedyet.com.zone
+/inwinterborn.com.zone
+/isonatrain.com.zone
+/kick.ie.zone
+/libtls.com.zone
+/libtls.org.zone
+/pictoriagallery.com.zone
+/pictoriagallery.net.zone
+/pictoriagallery.org.zone
+/questions.ie.zone
+/roguebeauty.me.zone
+/systemsatelier.com.zone
+/talideon.info.zone
+/zoicon.com.zone
+/zoicon.org.zone
