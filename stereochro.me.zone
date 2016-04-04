@@ -1,45 +1,45 @@
 $ORIGIN	stereochro.me.
 $TTL	3600
 
-@		SOA		ns4.talideon.com. k.stereochro.me. (
+@			SOA	ns4.talideon.com. k.stereochro.me. (
 				2016031802 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
 				1d         ; minimum
 				)
-;		NS		ns1.talideon.com.
-		NS		ns2.talideon.com.
-		NS		ns3.talideon.com.
-		NS		ns4.talideon.com.
-		A		45.55.149.240
-		AAAA	2604:a880:800:10::716:6001
-		MX		40 mail.talideon.com.
-		; The TXT record is needed for dumber mailservers.
-		TXT		"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
-		SPF		"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
+;			NS	ns1.talideon.com.
+			NS	ns2.talideon.com.
+			NS	ns3.talideon.com.
+			NS	ns4.talideon.com.
+			A	45.55.149.240
+			AAAA	2604:a880:800:10::716:6001
+			MX	40 mail.talideon.com.
+			; The TXT record is needed for dumber mailservers.
+			TXT	"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
+			SPF	"v=spf1 ip4:78.153.202.217 ip6:2a01:a8:201::217 a mx -all"
 
-www		CNAME	@
+www			CNAME	@
 
 default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCBUE1JLq4qpkkTKOtRqKQmKgJB0d+5B+kq1jW1ekZScz64UBhs2lF1Rmj3PWzcerSszwLvaZu329ynHIbEJT8Utk9v3Mt55Z7Svzv7Fub/jLIiDsQjlUhtpBzjB0P2gJtia53HmAO44C1eZdK+fU1Gqst3hcPRX9N/GM9umWElQIDAQAB"
 _adsp._domainkey	TXT	"dkim=unknown"
 
 ; Services
-_imap._tcp          SRV     0 1 143  mail.talideon.com.
-_imaps._tcp			SRV		0 1 993  mail.talideon.com.
-_submission._tcp	SRV		0 1 587  mail.talideon.com.
-_sieve._tcp			SRV		0 1 4190 mail.talideon.com.
-_xmpp-client._tcp	SRV		0 1 5222 stereochro.me.
-_xmpp-server._tcp	SRV		0 1 5269 stereochro.me.
+_imap._tcp		SRV	0 1 143  mail.talideon.com.
+_imaps._tcp		SRV	0 1 993  mail.talideon.com.
+_submission._tcp	SRV	0 1 587  mail.talideon.com.
+_sieve._tcp		SRV	0 1 4190 mail.talideon.com.
+_xmpp-client._tcp	SRV	0 1 5222 stereochro.me.
+_xmpp-server._tcp	SRV	0 1 5269 stereochro.me.
 
 ; DANE
 ; See notes in the zonefile for talideon.com.
-_dane				TLSA	2 1 1 32890ffa3e81a780b6b3ed5b7cd7f211b0d31673b31889dd18505cab417b3e95
-_dane				TLSA	3 1 1 32890ffa3e81a780b6b3ed5b7cd7f211b0d31673b31889dd18505cab417b3e95
-_443._tcp			CNAME	_dane
-_443._tcp			CNAME	_dane
+_dane			TLSA	2 1 1 32890ffa3e81a780b6b3ed5b7cd7f211b0d31673b31889dd18505cab417b3e95
+_dane			TLSA	3 1 1 32890ffa3e81a780b6b3ed5b7cd7f211b0d31673b31889dd18505cab417b3e95
+_443._tcp		CNAME	_dane
+_443._tcp		CNAME	_dane
 _443._tcp.www		CNAME	_dane
-_5222._tcp			CNAME	_dane
-_5269._tcp			CNAME	_dane
+_5222._tcp		CNAME	_dane
+_5269._tcp		CNAME	_dane
 
-; vim:set filetype=dns noet ts=4 sw=4 sts=4:
+; vim:set filetype=dns ts=8 sw=8 sts=8 noet:
