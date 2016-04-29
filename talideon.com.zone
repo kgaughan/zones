@@ -2,7 +2,7 @@ $ORIGIN	talideon.com.
 $TTL	3600
 
 @			SOA	ns4 k.stereochro.me. (
-				2016031802 ; serial
+				2016042900 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -57,6 +57,9 @@ lir			SSHFP	3 2 d655e85051012ad4a23fbd1a67032abfaac4748169445a22a70597961225a484
 
 ; My home network.
 etain			A	213.79.53.114
+
+; Work VM. The name is a bit of a private joke.
+foltor			A	46.22.138.20
 
 ; My Digital Ocean VM.
 cian			A	45.55.149.240
