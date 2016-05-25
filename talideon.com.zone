@@ -2,7 +2,7 @@ $ORIGIN	talideon.com.
 $TTL	3600
 
 @			SOA	ns4 k.stereochro.me. (
-				2016052500 ; serial
+				2016052501 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -97,8 +97,8 @@ _xmpp-server._tcp	SRV	0 1 5269 talideon.com.
 ; https://www.internetsociety.org/deploy360/blog/2016/01/lets-encrypt-certificates-for-mail-servers-and-dane-part-1-of-2/
 ; This contains a good explanation of the flags, for when I inevitably forget:
 ; https://netfuture.ch/2013/06/how-to-create-dnssec-dane-tlsa-entries/
-_dane			TLSA	2 1 1 29437b9a2ffae2b91529f8055c0fba91196ef62c463d1073689afd4a394ed85c
-_dane			TLSA	3 1 1 29437b9a2ffae2b91529f8055c0fba91196ef62c463d1073689afd4a394ed85c
+_dane			TLSA	2 1 1 86432ac4f266b7d59c686b58bbf66ebfad42b984b90d0653b6faabcb98f344b2
+_dane			TLSA	3 1 1 86432ac4f266b7d59c686b58bbf66ebfad42b984b90d0653b6faabcb98f344b2
 _25._tcp.mail		CNAME	_dane ; SMTP
 _143._tcp.mail		CNAME	_dane ; IMAP + STARTTLS
 _443._tcp		CNAME	_dane ; HTTPS (talideon.com)
