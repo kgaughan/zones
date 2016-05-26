@@ -2,13 +2,13 @@ $ORIGIN	talideon.com.
 $TTL	3600
 
 @			SOA	ns4 k.stereochro.me. (
-				2016052502 ; serial
+				2016052505 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
 				1d         ; minimum
 				)
-;			NS	ns1
+			NS	ns1
 			NS	ns2
 			NS	ns3
 			NS	ns4
@@ -28,9 +28,9 @@ mail			A	45.55.149.240
 mail			AAAA	2604:a880:800:10::716:6001
 
 ; Nameservers
-; lir.talideon.com
-ns1			A	78.153.202.217
-ns1			AAAA	2a01:a8:201::217
+; Hurricane Internet
+ns1			A	216.66.1.2
+ns1			AAAA	2001:470:400::2
 ; statler.moybella.net
 ns2			A	37.187.57.205
 ns2			AAAA	2001:41d0:b:5cd::205
@@ -108,21 +108,7 @@ _4190._tcp.mail		CNAME	_dane ; Sieve
 _5222._tcp		CNAME	_dane ; XMPP Client
 _5269._tcp		CNAME	_dane ; XMPP Server
 
-;; subject= /CN=repos.talideon.com
-;; issuer= /C=US/O=Let's Encrypt/CN=Let's Encrypt Authority X3
-;; notBefore=May 25 17:57:00 2016 GMT
-;; notAfter=Aug 23 17:57:00 2016 GMT
-_dane			TLSA	3 0 1 29437b9a2ffae2b91529f8055c0fba91196ef62c463d1073689afd4a394ed85c
 _dane			TLSA	3 1 1 86432ac4f266b7d59c686b58bbf66ebfad42b984b90d0653b6faabcb98f344b2
-_dane			TLSA	3 0 2 72a0a90ec55a9b2924866fb6c08d8fd1d62d2c84cd2bd604cc7d24410c1ce81640ed0fbdd799430ae97550c8905058bac9da75c006420879c4299506337398aa
-_dane			TLSA	3 1 2 c303b696e96ce33c3399ea0b8e6f93aaa5a7437d606d42ea06f7e1e8025202e3d52633e6f4e67daf3a477464800dad28b4b6375c5e379444a3e5305c92209fc1
-;; subject= /C=US/O=Let's Encrypt/CN=Let's Encrypt Authority X3
-;; issuer= /O=Digital Signature Trust Co./CN=DST Root CA X3
-;; notBefore=Mar 17 16:40:46 2016 GMT
-;; notAfter=Mar 17 16:40:46 2021 GMT
-_dane			TLSA	2 0 1 25847d668eb4f04fdd40b12b6b0740c567da7d024308eb6c2c96fe41d9de218d
 _dane			TLSA	2 1 1 60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18
-_dane			TLSA	2 0 2 2e1e12dacb350e69317a7f37d769f46f16f437cf8d392319279c93515e5600baed3d3acd5dc83b673e8c60cf7fba0dce00a4d162a3b966a3ebf72487c376fca0
-_dane			TLSA	2 1 2 774fad8c9a6afc2bdb44faba8390d213ae592fb0d56c5dfab152284e334d7cd6abd05799236e7aa6266edf81907c60404c57ee54c10a3a82fcc2a9146629b140
 
 ; vim:set filetype=dns ts=8 sw=8 sts=8 noet:
