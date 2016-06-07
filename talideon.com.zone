@@ -2,7 +2,7 @@ $ORIGIN	talideon.com.
 $TTL	3600
 
 @			SOA	ns4 k.stereochro.me. (
-				2016052505 ; serial
+				2016060800 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -29,8 +29,10 @@ mail			AAAA	2604:a880:800:10::716:6001
 
 ; Nameservers
 ; Hurricane Internet
-ns1			A	216.66.1.2
-ns1			AAAA	2001:470:400::2
+;ns1			A	216.66.1.2
+;ns1			AAAA	2001:470:400::2
+; foltor.talideon.com
+ns1			A	46.22.138.20
 ; statler.moybella.net
 ns2			A	37.187.57.205
 ns2			AAAA	2001:41d0:b:5cd::205
