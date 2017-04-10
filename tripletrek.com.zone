@@ -1,8 +1,8 @@
-$ORIGIN	talideon.eu.
+$ORIGIN	tripletrek.com.
 $TTL	3600
 
 @			SOA	ns4.talideon.com. k.stereochro.me. (
-				2017041000 ; serial
+				2016122000 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
@@ -18,8 +18,6 @@ $TTL	3600
 			; The TXT record is needed for dumber mailservers.
 			TXT	"v=spf1 a mx -all"
 			SPF	"v=spf1 a mx -all"
-			CAA	0 issue "letsencrypt.org"
-
 www			CNAME	@
 
 ; Services
