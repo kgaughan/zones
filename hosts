@@ -1,0 +1,12 @@
+manann.talideon.com
+
+[freebsd]
+manann.talideon.com
+
+[freebsd:vars]
+ansible_python_interpreter=/usr/local/bin/python
+
+[primaries]
+manann.talideon.com
+
+[secondaries]

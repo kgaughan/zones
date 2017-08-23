@@ -1,0 +1,16 @@
+---
+- name: update zones
+  hosts: primaries
+  remote_user: keith
+  become: true
+  gather_facts: true
+
+  tasks:
+    - name: dummy
+      command: true
+
+  handlers:
+    - name: reload nsd
+      service:
+        name: nsd
+        state: reloaded
