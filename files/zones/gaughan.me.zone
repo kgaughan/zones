@@ -1,8 +1,8 @@
-$ORIGIN	tripletrek.com.
+$ORIGIN	gaughan.me.
 $TTL	3600
 
-@			SOA	ns4.talideon.com. k.stereochro.me. (
-				2016122000 ; serial
+@			SOA	ns1.talideon.com. k.stereochro.me. (
+				2017082300 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
