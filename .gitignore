@@ -1,5 +1,6 @@
 *.db
 .*.sw?
+*.retry
 
 # The comments starting with '#!' mark parsed sections. What follows is a
 # directive followed by a parameter string. Sections are terminated by an

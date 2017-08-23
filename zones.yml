@@ -5,9 +5,45 @@
   become: true
   gather_facts: true
 
+  vars:
+    nsd_dir: /usr/local/etc/nsd
+    zone_serial: '0000000000'
+
   tasks:
-    - name: dummy
-      command: true
+    # We assume that nsd is installed and nsd-control is configured.
+    # Also /keys.conf and /nsd.conf
+    - name: ensure zones directory exists
+      file:
+        path: "{{ nsd_dir }}/zones"
+        state: directory
+        owner: nsd
+        group: nsd
+        mode: 0755
+
+    - name: generate basic zone files
+      template:
+        src: basic.zone.j2
+        dest: '{{ nsd_dir }}/zones/{{ item.zone }}.zone'
+      with_items:
+        - zone: gaughan.me
+          mail: true
+
+        - zone: ismulleyonatrain.com
+
+        - zone: keithgaughan.ie
+
+        - zone: roguebeauty.org
+          mail: true
+
+        - zone: talideon.eu
+          mail: true
+
+        - zone: tripletrek.com
+          mail: true
+
+        - zone: xn--cat-rma.eu
+
+        - zone: wafflecopter.net
 
   handlers:
     - name: reload nsd
