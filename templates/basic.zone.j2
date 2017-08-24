@@ -12,12 +12,12 @@ $TTL	3600
 ;			NS	ns2.talideon.com.
 			NS	ns3.talideon.com.
 			NS	ns4.talideon.com.
-			A	45.55.149.240
-			AAAA	2604:a880:800:10::716:6001
+			A	{{ haddrs[hroles.web].ipv4 }}
+			AAAA	{{ haddrs[hroles.web].ipv6 }}
 {% if item.get('mail') %}
-			MX	40 mail.talideon.com.
-			TXT	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
-			SPF	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
+			MX	40 {{ mailserver }}.
+			TXT	{{ spf | quote }}
+			SPF	{{ spf | quote }}
 {% else %}
 			TXT	"v=spf1 -all"
 			SPF	"v=spf1 -all"
@@ -32,8 +32,8 @@ www			CNAME	@
 
 {% if item.get('mail') %}
 ; Services
-_submission._tcp	SRV	0 1 587  mail.talideon.com.
-_sieve._tcp		SRV	0 1 4190 mail.talideon.com.
+_submission._tcp	SRV	0 1 587  {{ mailserver }}.
+_sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
 {% endif %}
 
 ; vim:set filetype=dns ts=8 sw=8 sts=8 noet:

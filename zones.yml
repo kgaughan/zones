@@ -7,6 +7,24 @@
 
   vars:
     nsd_dir: /usr/local/etc/nsd
+    spf: "v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
+    mailserver: mail.talideon.com
+    haddrs:
+      cian:
+        ipv4: 45.55.149.240
+        ipv6: 2604:a880:800:10::716:6001
+      manann:
+        ipv4: 5.9.82.71
+        ipv6: 2a01:4f8:162:4e::1:1
+      statler: # statler.moybella.net
+        ipv4: 37.187.57.205
+        ipv6: 2001:41d0:b:5cd::205
+      blacknight: # ns2.blacknightsolutions.com
+        ipv4: 78.153.202.4
+        ipv6: 2a01:a8:dc2:33::33
+    hroles:
+      web: cian
+      mail: cian
 
   tasks:
     # We assume that nsd is installed and nsd-control is configured.
@@ -19,6 +37,9 @@
         group: nsd
         mode: 0755
 
+    # TODO Turn this into a block that's iterated over for each domain. If a
+    # specific template file exists, use that, otherwise use the basic zone
+    # template.
     - name: generate basic zone files
       template:
         src: basic.zone.j2

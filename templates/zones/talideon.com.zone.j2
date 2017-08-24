@@ -12,12 +12,11 @@ $TTL	3600
 ;			NS	ns2
 			NS	ns3
 			NS	ns4
-			A	45.55.149.240
-			AAAA	2604:a880:800:10::716:6001
-			MX	40 mail.talideon.com.
-			; The TXT record is needed for dumber mailservers.
-			TXT	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
-			SPF	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
+			A	{{ haddrs[hroles.web].ipv4 }}
+			AAAA	{{ haddrs[hroles.web].ipv6 }}
+			MX	40 {{ mailserver }}.
+			TXT	{{ spf | quote }}
+			SPF	{{ spf | quote }}
 			CAA	0 issue "letsencrypt.org"
 
 www			CNAME	@
@@ -25,29 +24,29 @@ repos			CNAME	@
 projects		CNAME	@
 reader			CNAME	@
 
-mail			A	45.55.149.240
-mail			AAAA	2604:a880:800:10::716:6001
+mail			A	{{ haddrs[hroles.mail].ipv4 }}
+mail			AAAA	{{ haddrs[hroles.mail].ipv6 }}
 
 ; Nameservers
 ; manann.talideon.com 
-ns1			A	5.9.82.71 2a01:4f8:162:4e::1:1
-ns1			AAAA	2a01:4f8:162:4e::1:1
+ns1			A	{{ haddrs.manann.ipv4 }}
+ns1			AAAA	{{ haddrs.manann.ipv6 }}
 ; statler.moybella.net
-ns2			A	37.187.57.205
-ns2			AAAA	2001:41d0:b:5cd::205
-; ns2.blacknightsolutions.com
-ns3			A	78.153.202.4
-ns3			AAAA	2a01:a8:dc2:33::33
+ns2			A	{{ haddrs.statler.ipv4 }}
+ns2			AAAA	{{ haddrs.statler.ipv6 }}
+
+ns3			A	{{ haddrs.blacknight.ipv4 }}
+ns3			AAAA	{{ haddrs.blacknight.ipv6 }}
 ; cian.talideon.com
-ns4			A	45.55.149.240
-ns4			AAAA	2604:a880:800:10::716:6001
+ns4			A	{{ haddrs.cian.ipv4 }}
+ns4			AAAA	{{ haddrs.cian.ipv6 }}
 
 ; My Digital Ocean VM.
-cian			A	45.55.149.240
-cian			AAAA	2604:a880:800:10::716:6001
+cian			A	{{ haddrs.cian.ipv4 }}
+cian			AAAA	{{ haddrs.cian.ipv6 }}
 
-cian			TXT	"v=spf1 a mx -all"
-cian			SPF	"v=spf1 a mx -all"
+cian			TXT	{{ spf | quote }}
+cian			SPF	{{ spf | quote }}
 
 cian			SSHFP	1 1 b3c27d0efecee20d4c00e3f5f3cd2a61ca02ad82
 cian			SSHFP	1 2 7ad47957fbb90f54a299f29efbde82066f64744cb5c50e106af7da0d082821cf
@@ -57,21 +56,21 @@ cian			SSHFP	3 1 2f1baf6bf8d66c0615a205b7628475a419563f4b
 cian			SSHFP	3 2 21ec08609d41e94cad66a2cc06b8b47bb753a2400aeba2221ed9938979f6436b
 
 ; My Hetzner box.
-manann			A	5.9.82.71
-manann 			AAAA	2a01:4f8:162:4e::1:1
+manann			A	{{ haddrs.manann.ipv4 }}
+manann 			AAAA	{{ haddrs.manann.ipv6 }}
 
-manann			TXT	"v=spf1 a mx -all"
-manann			SPF	"v=spf1 a mx -all"
+manann			TXT	{{ spf | quote }}
+manann			SPF	{{ spf | quote }}
 
 ; Aliases.
 bethisad		CNAME	@
 mirrors			CNAME	@
 
 ; Services
-_imap._tcp		SRV	0 1 143  mail.talideon.com.
-_imaps._tcp		SRV	0 1 993  mail.talideon.com.
-_submission._tcp	SRV	0 1 587  mail.talideon.com.
-_sieve._tcp		SRV	0 1 4190 mail.talideon.com.
+_imap._tcp		SRV	0 1 143  {{ mailserver }}.
+_imaps._tcp		SRV	0 1 993  {{ mailserver }}.
+_submission._tcp	SRV	0 1 587  {{ mailserver }}.
+_sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
 _xmpp-client._tcp	SRV	0 1 5222 talideon.com.
 _xmpp-server._tcp	SRV	0 1 5269 talideon.com.
 
