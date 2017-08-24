@@ -16,8 +16,8 @@ $TTL	3600
 			AAAA	2604:a880:800:10::716:6001
 {% if item.get('mail') %}
 			MX	40 mail.talideon.com.
-			TXT	"v=spf1 a mx -all"
-			SPF	"v=spf1 a mx -all"
+			TXT	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
+			SPF	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
 {% else %}
 			TXT	"v=spf1 -all"
 			SPF	"v=spf1 -all"

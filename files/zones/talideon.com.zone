@@ -1,15 +1,15 @@
 $ORIGIN	talideon.com.
 $TTL	3600
 
-@			SOA	ns1 k.stereochro.me. (
+@			SOA	ns4 k.stereochro.me. (
 				2017082300 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
 				1d         ; minimum
 				)
-			NS	ns1
-			NS	ns2
+;			NS	ns1
+;			NS	ns2
 			NS	ns3
 			NS	ns4
 			A	45.55.149.240
