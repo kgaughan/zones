@@ -2,7 +2,7 @@ $ORIGIN	{{ item.zone }}.
 $TTL	3600
 
 @			SOA	ns1.talideon.com. k.stereochro.me. (
-				{{ zone_serial }} ; serial
+				{{ item.zone | next_serial }} ; serial
 				6h ; refresh
 				1h ; retry
 				1w ; expire

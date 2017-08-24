@@ -7,7 +7,6 @@
 
   vars:
     nsd_dir: /usr/local/etc/nsd
-    zone_serial: '0000000000'
 
   tasks:
     # We assume that nsd is installed and nsd-control is configured.
