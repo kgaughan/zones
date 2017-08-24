@@ -27,6 +27,10 @@
         - zone: gaughan.me
           mail: true
 
+        - zone: canthack.it
+          cnames:
+            - i
+
         - zone: ismulleyonatrain.com
 
         - zone: keithgaughan.ie

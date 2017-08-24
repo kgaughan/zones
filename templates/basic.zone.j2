@@ -1,15 +1,15 @@
 $ORIGIN	{{ item.zone }}.
 $TTL	3600
 
-@			SOA	ns1.talideon.com. k.stereochro.me. (
+@			SOA	ns4.talideon.com. k.stereochro.me. (
 				{{ item.zone | next_serial }} ; serial
 				6h ; refresh
 				1h ; retry
 				1w ; expire
 				1d ; minimum
 				)
-			NS	ns1.talideon.com.
-			NS	ns2.talideon.com.
+;			NS	ns1.talideon.com.
+;			NS	ns2.talideon.com.
 			NS	ns3.talideon.com.
 			NS	ns4.talideon.com.
 			A	45.55.149.240
@@ -25,6 +25,10 @@ $TTL	3600
 			CAA	0 issue "letsencrypt.org"
 
 www			CNAME	@
+{% for cname in item.get('cnames', ()) %}
+{{ cname }}		CNAME	@
+{% endfor %}
+
 
 {% if item.get('mail') %}
 ; Services
