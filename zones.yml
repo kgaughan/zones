@@ -25,6 +25,26 @@
     hroles:
       web: cian
       mail: cian
+    zones:
+      - canthack.it
+      - gaughan.me
+      - ismulleyonatrain.com
+      - keithgaughan.ie
+      - roguebeauty.org
+      - stereochro.me
+      - talideon.com
+      - talideon.eu
+      - tripletrek.com
+      - wafflecopter.net
+      - xn--cat-rma.eu
+    mail_zones:
+      - gaughan.me
+      - roguebeauty.org
+      - talideon.eu
+      - tripletrek.com
+    zone_cnames:
+      canthack.it:
+        - i
 
   tasks:
     # We assume that nsd is installed and nsd-control is configured.
@@ -37,37 +57,8 @@
         group: nsd
         mode: 0755
 
-    # TODO Turn this into a block that's iterated over for each domain. If a
-    # specific template file exists, use that, otherwise use the basic zone
-    # template.
-    - name: generate basic zone files
-      template:
-        src: basic.zone.j2
-        dest: '{{ nsd_dir }}/zones/{{ item.zone }}.zone'
-      with_items:
-        - zone: gaughan.me
-          mail: true
-
-        - zone: canthack.it
-          cnames:
-            - i
-
-        - zone: ismulleyonatrain.com
-
-        - zone: keithgaughan.ie
-
-        - zone: roguebeauty.org
-          mail: true
-
-        - zone: talideon.eu
-          mail: true
-
-        - zone: tripletrek.com
-          mail: true
-
-        - zone: xn--cat-rma.eu
-
-        - zone: wafflecopter.net
+    - include: templating.yml
+      with_items: '{{ zones }}'
 
   handlers:
     - name: reload nsd

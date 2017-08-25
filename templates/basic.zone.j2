@@ -1,8 +1,8 @@
-$ORIGIN	{{ item.zone }}.
+$ORIGIN	{{ item }}.
 $TTL	3600
 
 @			SOA	ns4.talideon.com. k.stereochro.me. (
-				{{ item.zone | next_serial }} ; serial
+				{{ item | next_serial }} ; serial
 				6h ; refresh
 				1h ; retry
 				1w ; expire
@@ -14,7 +14,7 @@ $TTL	3600
 			NS	ns4.talideon.com.
 			A	{{ haddrs[hroles.web].ipv4 }}
 			AAAA	{{ haddrs[hroles.web].ipv6 }}
-{% if item.get('mail') %}
+{% if item in mail_zones %}
 			MX	40 {{ mailserver }}.
 			TXT	{{ spf | quote }}
 			SPF	{{ spf | quote }}
@@ -25,12 +25,11 @@ $TTL	3600
 			CAA	0 issue "letsencrypt.org"
 
 www			CNAME	@
-{% for cname in item.get('cnames', ()) %}
+{% for cname in zone_cnames.get(item, ()) %}
 {{ cname }}		CNAME	@
 {% endfor %}
 
-
-{% if item.get('mail') %}
+{% if item in mail_zones %}
 ; Services
 _submission._tcp	SRV	0 1 587  {{ mailserver }}.
 _sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
