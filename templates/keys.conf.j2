@@ -1,0 +1,6 @@
+{% for key in keys %}
+key:
+	name: {{ key.id }}
+	algorithm: {{ key.algorithm }}
+	secret: "{{ key.secret }}"
+{% endfor %}
