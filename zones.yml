@@ -46,6 +46,14 @@
     zone_cnames:
       canthack.it:
         - i
+    secondary_patterns:
+      slave_niallk:
+        ipv4: 81.17.243.32 # Or: 185.2.64.125
+        tsig: cia.niley.net
+    secondary_zones:
+      nk.ie: slave_niallk
+      niley.net: slave_niallk
+      nil.ie: slave_niallk
 
   tasks:
     - name: include the vault file
