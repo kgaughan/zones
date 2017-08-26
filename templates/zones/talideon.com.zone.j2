@@ -15,8 +15,8 @@ $TTL	3600
 			A	{{ haddrs[hroles.web].ipv4 }}
 			AAAA	{{ haddrs[hroles.web].ipv6 }}
 			MX	40 {{ mailserver }}.
-			TXT	{{ spf | quote }}
-			SPF	{{ spf | quote }}
+			TXT	"{{ spf }}"
+			SPF	"{{ spf }}"
 			CAA	0 issue "letsencrypt.org"
 
 www			CNAME	@
@@ -41,8 +41,8 @@ ns4			AAAA	{{ haddrs.cian.ipv6 }}
 cian			A	{{ haddrs.cian.ipv4 }}
 cian			AAAA	{{ haddrs.cian.ipv6 }}
 
-cian			TXT	{{ spf | quote }}
-cian			SPF	{{ spf | quote }}
+cian			TXT	"{{ spf }}"
+cian			SPF	"{{ spf }}"
 
 cian			SSHFP	1 1 b3c27d0efecee20d4c00e3f5f3cd2a61ca02ad82
 cian			SSHFP	1 2 7ad47957fbb90f54a299f29efbde82066f64744cb5c50e106af7da0d082821cf
@@ -55,8 +55,8 @@ cian			SSHFP	3 2 21ec08609d41e94cad66a2cc06b8b47bb753a2400aeba2221ed9938979f6436
 manann			A	{{ haddrs.manann.ipv4 }}
 manann 			AAAA	{{ haddrs.manann.ipv6 }}
 
-manann			TXT	{{ spf | quote }}
-manann			SPF	{{ spf | quote }}
+manann			TXT	"{{ spf }}"
+manann			SPF	"{{ spf }}"
 
 ; Aliases.
 bethisad		CNAME	@

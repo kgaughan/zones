@@ -15,8 +15,8 @@ $TTL	3600
 			A	{{ haddrs[hroles.web].ipv4 }}
 			AAAA	{{ haddrs[hroles.web].ipv6 }}
 			MX	40 {{ mailserver }}.
-			TXT	{{ spf | quote }}
-			SPF	{{ spf | quote }}
+			TXT	"{{ spf }}"
+			SPF	"{{ spf }}"
 			CAA	0 issue "letsencrypt.org"
 
 www			CNAME	@
