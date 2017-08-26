@@ -1,0 +1,41 @@
+pattern:
+	name: default
+	zonefile: zones/%s.zone
+{% for name, fields in haddrs.iteritems() %}
+
+	# {{ name }}
+{% if 'ipv6' in fields %}
+	notify: {{ fields.ipv6 }} {{ fields.get('tsig', 'NOKEY') }}
+	provide-xfr: {{ fields.ipv6 }} {{ fields.get('tsig', 'NOKEY') }}
+{% endif %}
+{% if 'ipv4' in fields %}
+	notify: {{ fields.ipv4 }} {{ fields.get('tsig', 'NOKEY') }}
+	provide-xfr: {{ fields.ipv4 }} {{ fields.get('tsig', 'NOKEY') }}
+{% endif %}
+{% endfor %}
+
+{% for zone in zones %}
+zone:
+	name: "{{ zone }}"
+	include-pattern: default
+{% endfor %}
+
+{% for name, fields in secondary_patterns.iteritems() %}
+pattern:
+	name: {{ name }}
+	zonefile: zones:/%s.zone
+{% if 'ipv6' in fields %}
+	allow-notify: {{ fields.ipv6 }} {{ fields.get('tsig', 'NOKEY') }}
+	request-xfr: {{ fields.ipv6 }} {{ fields.get('tsig', 'NOKEY') }}
+{% endif %}
+{% if 'ipv4' in fields %}
+	allow-notify: {{ fields.ipv4 }} {{ fields.get('tsig', 'NOKEY') }}
+	request-xfr: {{ fields.ipv4 }} {{ fields.get('tsig', 'NOKEY') }}
+{% endif %}
+{% endfor %}
+
+{% for zone, pattern in secondary_zones.iteritems() %}
+zone:
+	name: {{ zone }}
+	include-pattern: {{ pattern }}
+{% endfor %}

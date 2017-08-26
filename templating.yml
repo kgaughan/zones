@@ -1,0 +1,21 @@
+---
+- name: check for custom template
+  local_action: stat path="templates/zones/{{ item }}.zone.j2"
+  become: false
+  register: st
+
+- name: generate custom zone file for {{ item }}
+  template:
+    src: "zones/{{ item }}.zone.j2"
+    dest: '{{ nsd_dir }}/zones/{{ item }}.zone'
+  when: st.stat.exists
+  notify:
+    - reload nsd
+
+- name: generate basic zone files {{ item }}
+  template:
+    src: basic.zone.j2
+    dest: '{{ nsd_dir }}/zones/{{ item }}.zone'
+  when: not st.stat.exists
+  notify:
+    - reload nsd

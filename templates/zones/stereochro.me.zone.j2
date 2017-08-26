@@ -2,22 +2,21 @@ $ORIGIN	stereochro.me.
 $TTL	3600
 
 @			SOA	ns4.talideon.com. k.stereochro.me. (
-				2017082100 ; serial
+				2017082300 ; serial
 				6h         ; refresh
 				1h         ; retry
 				1w         ; expire
 				1d         ; minimum
 				)
 ;			NS	ns1.talideon.com.
-			NS	ns2.talideon.com.
+;			NS	ns2.talideon.com.
 			NS	ns3.talideon.com.
 			NS	ns4.talideon.com.
-			A	45.55.149.240
-			AAAA	2604:a880:800:10::716:6001
-			MX	40 mail.talideon.com.
-			; The TXT record is needed for dumber mailservers.
-			TXT	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
-			SPF	"v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
+			A	{{ haddrs[hroles.web].ipv4 }}
+			AAAA	{{ haddrs[hroles.web].ipv6 }}
+			MX	40 {{ mailserver }}.
+			TXT	{{ spf | quote }}
+			SPF	{{ spf | quote }}
 			CAA	0 issue "letsencrypt.org"
 
 www			CNAME	@
@@ -26,10 +25,10 @@ default._domainkey	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQ
 _adsp._domainkey	TXT	"dkim=unknown"
 
 ; Services
-_imap._tcp		SRV	0 1 143  mail.talideon.com.
-_imaps._tcp		SRV	0 1 993  mail.talideon.com.
-_submission._tcp	SRV	0 1 587  mail.talideon.com.
-_sieve._tcp		SRV	0 1 4190 mail.talideon.com.
+_imap._tcp		SRV	0 1 143  {{ mailserver }}.
+_imaps._tcp		SRV	0 1 993  {{ mailserver }}.
+_submission._tcp	SRV	0 1 587  {{ mailserver }}.
+_sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
 _xmpp-client._tcp	SRV	0 1 5222 stereochro.me.
 _xmpp-server._tcp	SRV	0 1 5269 stereochro.me.
 
