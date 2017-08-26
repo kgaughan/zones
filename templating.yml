@@ -9,9 +9,13 @@
     src: "zones/{{ item }}.zone.j2"
     dest: '{{ nsd_dir }}/zones/{{ item }}.zone'
   when: st.stat.exists
+  notify:
+    - reload nsd
 
 - name: generate basic zone files {{ item }}
   template:
     src: basic.zone.j2
     dest: '{{ nsd_dir }}/zones/{{ item }}.zone'
   when: not st.stat.exists
+  notify:
+    - reload nsd

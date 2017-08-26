@@ -80,6 +80,8 @@
         owner: nsd
         group: nsd
         mode: 0600
+      notify:
+        - reload nsd
 
     - name: generate zones.conf
       template:
@@ -88,6 +90,8 @@
         owner: nsd
         group: nsd
         mode: 0644
+      notify:
+        - reload nsd
 
   handlers:
     - name: reload nsd
