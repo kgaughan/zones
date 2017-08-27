@@ -48,7 +48,7 @@
         - i
     secondary_patterns:
       slave_niallk:
-        ipv4: 81.17.243.32 # Or: 185.2.64.125
+        ipv4: 185.2.64.125 # 46.22.136.104
         tsig: cia.niley.net
     secondary_zones:
       nk.ie: slave_niallk
