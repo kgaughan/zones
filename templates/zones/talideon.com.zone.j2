@@ -36,8 +36,8 @@ ns4			AAAA	{{ haddrs.cian.ipv6 }}
 {% for name in ['lir', 'cian', 'manann'] %}
 {{ name }}		A	{{ haddrs[name].ipv4 }}
 {{ name }}		AAAA	{{ haddrs[name].ipv6 }}
-{{ name }}		TXT	"{{ spf }}"
-{{ name }}		SPF	"{{ spf }}"
+{{ name }}		TXT	"v=spf1 a mx -all"
+{{ name }}		SPF	"v=spf1 a mx -all"
 {% endfor %}
 
 cian			SSHFP	1 1 b3c27d0efecee20d4c00e3f5f3cd2a61ca02ad82
