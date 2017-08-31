@@ -8,8 +8,8 @@ $TTL	3600
 				1w         ; expire
 				1d         ; minimum
 				)
-;			NS	ns1
-;			NS	ns2
+			NS	ns1
+			NS	ns2
 			NS	ns3
 			NS	ns4
 			A	{{ haddrs[hroles.web].ipv4 }}
@@ -23,17 +23,17 @@ mail			A	{{ haddrs[hroles.mail].ipv4 }}
 mail			AAAA	{{ haddrs[hroles.mail].ipv6 }}
 
 ; Nameservers
-ns1			A	{{ haddrs.manann.ipv4 }}
-ns1			AAAA	{{ haddrs.manann.ipv6 }}
-ns2			A	{{ haddrs.statler.ipv4 }}
-ns2			AAAA	{{ haddrs.statler.ipv6 }}
+ns1			A	{{ haddrs.lir.ipv4 }}
+ns1			AAAA	{{ haddrs.lir.ipv6 }}
+ns2			A	{{ haddrs.manann.ipv4 }}
+ns2			AAAA	{{ haddrs.manann.ipv6 }}
 ns3			A	{{ haddrs.blacknight.ipv4 }}
 ns3			AAAA	{{ haddrs.blacknight.ipv6 }}
 ns4			A	{{ haddrs.cian.ipv4 }}
 ns4			AAAA	{{ haddrs.cian.ipv6 }}
 
 ; Servers.
-{% for name in ['cian', 'manann'] %}
+{% for name in ['lir', 'cian', 'manann'] %}
 {{ name }}		A	{{ haddrs[name].ipv4 }}
 {{ name }}		AAAA	{{ haddrs[name].ipv6 }}
 {{ name }}		TXT	"{{ spf }}"
