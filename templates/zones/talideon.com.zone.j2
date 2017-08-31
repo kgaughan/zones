@@ -19,11 +19,6 @@ $TTL	3600
 			SPF	"{{ spf }}"
 			CAA	0 issue "letsencrypt.org"
 
-www			CNAME	@
-repos			CNAME	@
-projects		CNAME	@
-reader			CNAME	@
-
 mail			A	{{ haddrs[hroles.mail].ipv4 }}
 mail			AAAA	{{ haddrs[hroles.mail].ipv6 }}
 
@@ -37,12 +32,13 @@ ns3			AAAA	{{ haddrs.blacknight.ipv6 }}
 ns4			A	{{ haddrs.cian.ipv4 }}
 ns4			AAAA	{{ haddrs.cian.ipv6 }}
 
-; My Digital Ocean VM.
-cian			A	{{ haddrs.cian.ipv4 }}
-cian			AAAA	{{ haddrs.cian.ipv6 }}
-
-cian			TXT	"{{ spf }}"
-cian			SPF	"{{ spf }}"
+; Servers.
+{% for name in ['cian', 'manann'] %}
+{{ name }}		A	{{ haddrs[name].ipv4 }}
+{{ name }}		AAAA	{{ haddrs[name].ipv6 }}
+{{ name }}		TXT	"{{ spf }}"
+{{ name }}		SPF	"{{ spf }}"
+{% endfor %}
 
 cian			SSHFP	1 1 b3c27d0efecee20d4c00e3f5f3cd2a61ca02ad82
 cian			SSHFP	1 2 7ad47957fbb90f54a299f29efbde82066f64744cb5c50e106af7da0d082821cf
@@ -51,16 +47,10 @@ cian			SSHFP	2 2 f8ef86bb095339039496b875ae2dfc8a27bb6b0f8d32f40990911d3d8e935c1
 cian			SSHFP	3 1 2f1baf6bf8d66c0615a205b7628475a419563f4b
 cian			SSHFP	3 2 21ec08609d41e94cad66a2cc06b8b47bb753a2400aeba2221ed9938979f6436b
 
-; My Hetzner box.
-manann			A	{{ haddrs.manann.ipv4 }}
-manann 			AAAA	{{ haddrs.manann.ipv6 }}
-
-manann			TXT	"{{ spf }}"
-manann			SPF	"{{ spf }}"
-
 ; Aliases.
-bethisad		CNAME	@
-mirrors			CNAME	@
+{% for cname in zone_cnames.get(item, ()) %}
+{{ cname }}		CNAME	@
+{% endfor %}
 
 ; Services
 _imap._tcp		SRV	0 1 143  {{ mailserver }}.

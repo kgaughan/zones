@@ -46,6 +46,13 @@
     zone_cnames:
       canthack.it:
         - i
+      talideon.com:
+        - www
+        - repos
+        - projects
+        - reader
+        - bethisad
+        - mirrors
     secondary_patterns:
       slave_niallk:
         ipv4: 185.2.64.125 # 46.22.136.104
