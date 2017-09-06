@@ -1,12 +1,12 @@
-$ORIGIN	talideon.com.
+$ORIGIN	{{ item }}.
 $TTL	3600
 
-@			SOA	ns4 k.stereochro.me. (
-				2017082300 ; serial
-				6h         ; refresh
-				1h         ; retry
-				1w         ; expire
-				1d         ; minimum
+@			SOA	ns1 k.stereochro.me. (
+				{{ item | next_serial }} ; serial
+				6h ; refresh
+				1h ; retry
+				1w ; expire
+				1d ; minimum
 				)
 			NS	ns1
 			NS	ns2
@@ -23,10 +23,10 @@ mail			A	{{ haddrs[hroles.mail].ipv4 }}
 mail			AAAA	{{ haddrs[hroles.mail].ipv6 }}
 
 ; Nameservers
-ns1			A	{{ haddrs.lir.ipv4 }}
-ns1			AAAA	{{ haddrs.lir.ipv6 }}
-ns2			A	{{ haddrs.manann.ipv4 }}
-ns2			AAAA	{{ haddrs.manann.ipv6 }}
+ns1			A	{{ haddrs.manann.ipv4 }}
+ns1			AAAA	{{ haddrs.manann.ipv6 }}
+ns2			A	{{ haddrs.lir.ipv4 }}
+ns2			AAAA	{{ haddrs.lir.ipv6 }}
 ns3			A	{{ haddrs.blacknight.ipv4 }}
 ns3			AAAA	{{ haddrs.blacknight.ipv6 }}
 ns4			A	{{ haddrs.cian.ipv4 }}
@@ -57,8 +57,8 @@ _imap._tcp		SRV	0 1 143  {{ mailserver }}.
 _imaps._tcp		SRV	0 1 993  {{ mailserver }}.
 _submission._tcp	SRV	0 1 587  {{ mailserver }}.
 _sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
-_xmpp-client._tcp	SRV	0 1 5222 talideon.com.
-_xmpp-server._tcp	SRV	0 1 5269 talideon.com.
+_xmpp-client._tcp	SRV	0 1 5222 {{ item }}.
+_xmpp-server._tcp	SRV	0 1 5269 {{ item }}.
 
 ; DANE
 ; According to https://tools.ietf.org/html/rfc7672, for SMTP, we can't use
