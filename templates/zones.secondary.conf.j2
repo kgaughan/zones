@@ -1,0 +1,14 @@
+pattern:
+	name: default
+	zonefile: zones/%s.zone
+
+	notify: {{ haddrs['manann'].ipv6 }} {{ haddrs['manann'].get('tsig', 'NOKEY') }}
+	provide-xfr: {{ haddrs['manann'].ipv6 }} {{ haddrs['manann'].get('tsig', 'NOKEY') }}
+	notify: {{ haddrs['manann'].ipv4 }} {{ haddrs['manann'].get('tsig', 'NOKEY') }}
+	provide-xfr: {{ haddrs['manann'].ipv4 }} {{ haddrs['manann'].get('tsig', 'NOKEY') }}
+
+{% for zone in zones %}
+zone:
+	name: "{{ zone }}"
+	include-pattern: default
+{% endfor %}

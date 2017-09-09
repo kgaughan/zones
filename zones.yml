@@ -1,6 +1,6 @@
 ---
 - name: update zones
-  hosts: primaries
+  hosts: primaries:secondaries
   remote_user: keith
   become: true
   gather_facts: true
@@ -78,6 +78,7 @@
 
     - include: templating.yml
       with_items: '{{ zones }}'
+      when: inventory_hostname in groups['primaries']
 
     - name: generate keys.conf
       template:
@@ -89,13 +90,25 @@
       notify:
         - reload nsd
 
-    - name: generate zones.conf
+    - name: generate primary zones.conf
       template:
-        src: zones.conf.j2
+        src: zones.primary.conf.j2
         dest: "{{ nsd_dir }}/zones.conf"
         owner: nsd
         group: nsd
         mode: 0644
+      when: inventory_hostname in groups['primaries']
+      notify:
+        - reload nsd
+
+    - name: generate secondary zones.conf
+      template:
+        src: zones.secondary.conf.j2
+        dest: "{{ nsd_dir }}/zones.conf"
+        owner: nsd
+        group: nsd
+        mode: 0644
+      when: inventory_hostname in groups['secondaries']
       notify:
         - reload nsd
 
