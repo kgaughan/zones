@@ -13,12 +13,15 @@
       lir:  # My Blacknight box.
         ipv4: 78.153.202.217
         ipv6: 2a01:a8:201::217
+        tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
       cian:  # My Digital Ocean VM.
         ipv4: 45.55.149.240
         ipv6: 2604:a880:800:10::716:6001
+        tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
       manann:  # My Hetzner box.
         ipv4: 5.9.82.71
         ipv6: 2a01:4f8:162:4e::1:1
+        tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
       blacknight: # ns2.blacknightsolutions.com
         ipv4: 78.153.202.4
         ipv6: 2a01:a8:dc2:33::33
