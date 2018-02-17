@@ -1,0 +1,20 @@
+---
+# We assume that nsd is installed and nsd-control is configured.
+# Also /keys.conf and /nsd.conf
+- name: ensure zones directory exists
+  file:
+    path: "{{ nsd_dir }}/zones"
+    state: directory
+    owner: nsd
+    group: nsd
+    mode: 0755
+
+- name: generate keys.conf
+  template:
+    src: keys.conf.j2
+    dest: "{{ nsd_dir }}/keys.conf"
+    owner: nsd
+    group: nsd
+    mode: 0600
+  notify:
+    - reload nsd

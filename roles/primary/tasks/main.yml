@@ -1,0 +1,13 @@
+---
+- include_tasks: templating.yml
+  with_items: '{{ zones }}'
+
+- name: generate primary zones.conf
+  template:
+    src: zones.conf.j2
+    dest: "{{ nsd_dir }}/zones.conf"
+    owner: nsd
+    group: nsd
+    mode: 0644
+  notify:
+    - reload nsd

@@ -1,0 +1,10 @@
+---
+- name: generate secondary zones.conf
+  template:
+    src: zones.conf.j2
+    dest: "{{ nsd_dir }}/zones.conf"
+    owner: nsd
+    group: nsd
+    mode: 0644
+  notify:
+    - reload nsd
