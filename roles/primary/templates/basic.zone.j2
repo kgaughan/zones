@@ -31,6 +31,8 @@ www			CNAME	@
 
 {% if item in mail_zones %}
 ; Services
+_imap._tcp		SRV	0 1 143  {{ mailserver }}.
+_imaps._tcp		SRV	0 1 993  {{ mailserver }}.
 _submission._tcp	SRV	0 1 587  {{ mailserver }}.
 _sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
 {% endif %}

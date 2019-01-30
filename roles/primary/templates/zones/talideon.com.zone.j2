@@ -23,17 +23,17 @@ mail			A	{{ haddrs[hroles.mail].ipv4 }}
 mail			AAAA	{{ haddrs[hroles.mail].ipv6 }}
 
 ; Nameservers
-ns1			A	{{ haddrs['manann.talideon.com'].ipv4 }}
-ns1			AAAA	{{ haddrs['manann.talideon.com'].ipv6 }}
-ns2			A	{{ haddrs['lir.talideon.com'].ipv4 }}
-ns2			AAAA	{{ haddrs['lir.talideon.com'].ipv6 }}
+ns1			A	{{ haddrs['lir.talideon.com'].ipv4 }}
+ns1			AAAA	{{ haddrs['lir.talideon.com'].ipv6 }}
+ns2			A	{{ haddrs['statler.moybella.net'].ipv4 }}
+ns2			AAAA	{{ haddrs['statler.moybella.net'].ipv6 }}
 ns3			A	{{ haddrs['ns2.blacknightsolutions.com'].ipv4 }}
 ns3			AAAA	{{ haddrs['ns2.blacknightsolutions.com'].ipv6 }}
 ns4			A	{{ haddrs['cian.talideon.com'].ipv4 }}
 ns4			AAAA	{{ haddrs['cian.talideon.com'].ipv6 }}
 
 ; Servers.
-{% for name in ['lir', 'cian', 'manann'] %}
+{% for name in ['lir', 'cian', 'manann', 'eimhir'] %}
 {{ name }}		A	{{ haddrs[name + '.talideon.com'].ipv4 }}
 {{ name }}		AAAA	{{ haddrs[name + '.talideon.com'].ipv6 }}
 {{ name }}		TXT	"v=spf1 a mx -all"
@@ -80,7 +80,6 @@ _4190._tcp.mail		CNAME	_dane ; Sieve
 _5222._tcp		CNAME	_dane ; XMPP Client
 _5269._tcp		CNAME	_dane ; XMPP Server
 
-_dane			TLSA	3 1 1 86432ac4f266b7d59c686b58bbf66ebfad42b984b90d0653b6faabcb98f344b2
-_dane			TLSA	2 1 1 60b87575447dcba2a36b7d11ac09fb24a9db406fee12d2cc90180517616e8a18
+_dane			TLSA	3 1 1 49fc982789dbfdc4edc07b22902f84b9bd5e2a3ef1b5f19fd91ba4ca7b664b34
 
 ; vim:set filetype=dns ts=8 sw=8 sts=8 noet:

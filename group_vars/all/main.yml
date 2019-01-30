@@ -15,6 +15,10 @@ haddrs:
     ipv4: 5.9.82.71
     ipv6: 2a01:4f8:162:4e::1:1
     tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
+  eimhir.talideon.com:  # My replacement for cian.
+    ipv4: 159.203.59.98
+    ipv6: 2604:a880:cad:d0::c6a:a001
+    tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
   ns2.blacknightsolutions.com:
     ipv4: 78.153.202.4
     ipv6: 2a01:a8:dc2:33::33
@@ -23,6 +27,7 @@ hroles:
   mail: cian.talideon.com
 zones:
   - canthack.it
+  - gaughan.ie
   - gaughan.me
   - ismulleyonatrain.com
   - keithgaughan.ie
