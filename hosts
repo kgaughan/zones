@@ -1,15 +1,15 @@
-manann.talideon.com
+eimhir.talideon.com
 lir.talideon.com
 
 [freebsd]
-manann.talideon.com
+eimhir.talideon.com
 lir.talideon.com
 
 [freebsd:vars]
 ansible_python_interpreter=/usr/local/bin/python
 
 [primaries]
-manann.talideon.com
+lir.talideon.com
 
 [secondaries]
-lir.talideon.com
+eimhir.talideon.com
