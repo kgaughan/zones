@@ -2,4 +2,4 @@
 - name: reload nsd
   service:
     name: nsd
-    state: reloaded
+    state: restarted
