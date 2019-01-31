@@ -1,5 +1,5 @@
 pattern:
-	name: default
+	name: secondary
 	zonefile: zones/%s.zone
 
 {% for host in groups['primaries'] %}
@@ -16,5 +16,5 @@ pattern:
 {% for zone in zones %}
 zone:
 	name: "{{ zone }}"
-	include-pattern: default
+	include-pattern: secondary
 {% endfor %}
