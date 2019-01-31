@@ -26,7 +26,7 @@ def run_query(cmd, rtype, fqdn, ns=None):
         args.append('@' + ns)
     args.extend([fqdn, rtype])
 
-    for line in subprocess.check_output(args).split('\n'):
+    for line in subprocess.check_output(args).decode().split('\n'):
         if line.startswith(';'):
             continue
         parsed = shlex.split(line)

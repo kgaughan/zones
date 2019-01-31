@@ -1,7 +1,7 @@
 pattern:
 	name: default
 	zonefile: zones/%s.zone
-{% for name, fields in haddrs.iteritems() %}
+{% for name, fields in haddrs.items() %}
 
 	# {{ name }}
 {% if 'ipv6' in fields %}
@@ -20,7 +20,7 @@ zone:
 	include-pattern: default
 {% endfor %}
 
-{% for name, fields in secondary_patterns.iteritems() %}
+{% for name, fields in secondary_patterns.items() %}
 pattern:
 	name: {{ name }}
 	zonefile: zones:/%s.zone
@@ -34,7 +34,7 @@ pattern:
 {% endif %}
 {% endfor %}
 
-{% for zone, pattern in secondary_zones.iteritems() %}
+{% for zone, pattern in secondary_zones.items() %}
 zone:
 	name: {{ zone }}
 	include-pattern: {{ pattern }}
