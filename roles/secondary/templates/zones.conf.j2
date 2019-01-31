@@ -4,12 +4,12 @@ pattern:
 
 {% for host in groups['primaries'] %}
 {% if 'ipv6' in haddrs[host] %}
-	notify: {{ haddrs[host].ipv6 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
-	provide-xfr: {{ haddrs[host].ipv6 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
+	allow-notify: {{ haddrs[host].ipv6 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
+	request-xfr: {{ haddrs[host].ipv6 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
 {% endif %}
 {% if 'ipv4' in haddrs[host] %}
-	notify: {{ haddrs[host].ipv4 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
-	provide-xfr: {{ haddrs[host].ipv4 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
+	allow-notify: {{ haddrs[host].ipv4 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
+	request-xfr: {{ haddrs[host].ipv4 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
 {% endif %}
 {% endfor %}
 
