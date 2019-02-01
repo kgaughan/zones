@@ -1,9 +1,11 @@
 eimhir.talideon.com
 lir.talideon.com
+cian.talideon.com ansible_user=freebsd
 
 [freebsd]
 eimhir.talideon.com
 lir.talideon.com
+cian.talideon.com
 
 [freebsd:vars]
 ansible_python_interpreter=/usr/local/bin/python
@@ -13,3 +15,4 @@ lir.talideon.com
 
 [secondaries]
 eimhir.talideon.com
+cian.talideon.com
