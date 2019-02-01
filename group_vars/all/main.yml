@@ -30,6 +30,8 @@ hroles:
   web: cian.talideon.com
   mail: cian.talideon.com
 zones:
+  - questions.ie
+  - kick.ie
   - canthack.it
   - gaughan.ie
   - gaughan.me
