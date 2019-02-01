@@ -19,6 +19,10 @@ haddrs:
     ipv4: 159.203.59.98
     ipv6: 2604:a880:cad:d0::c6a:a001
     tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
+  statler.moybella.net:  # One of Niall's servers.
+    ipv4: 37.187.57.205
+    ipv6: 2001:41d0:b:5cd::205
+    tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
   ns2.blacknightsolutions.com:
     ipv4: 78.153.202.4
     ipv6: 2a01:a8:dc2:33::33
@@ -48,11 +52,5 @@ zone_cnames:
     mirrors: "@"
     reader: eimhir
     webmail: eimhir
-secondary_patterns:
-  slave_niallk:
-    ipv4: 185.2.64.125 # 46.22.136.104
-    tsig: cia.niley.net
-secondary_zones:
-  nk.ie: slave_niallk
-  niley.net: slave_niallk
-  nil.ie: slave_niallk
+secondary_patterns: {}
+secondary_zones: {}
