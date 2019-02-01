@@ -52,6 +52,8 @@ cian			SSHFP	3 2 21ec08609d41e94cad66a2cc06b8b47bb753a2400aeba2221ed9938979f6436
 {{ cname }}		CNAME	@
 {% endfor %}
 
+webmail			CNAME	eimhir
+
 ; Services
 _imap._tcp		SRV	0 1 143  {{ mailserver }}.
 _imaps._tcp		SRV	0 1 993  {{ mailserver }}.
