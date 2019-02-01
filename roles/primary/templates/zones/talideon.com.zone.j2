@@ -48,11 +48,10 @@ cian			SSHFP	3 1 2f1baf6bf8d66c0615a205b7628475a419563f4b
 cian			SSHFP	3 2 21ec08609d41e94cad66a2cc06b8b47bb753a2400aeba2221ed9938979f6436b
 
 ; Aliases.
-{% for cname in zone_cnames.get(item, ()) %}
-{{ cname }}		CNAME	@
+www			CNAME	@
+{% for cname, dest in zone_cnames.get(item, {}).items() %}
+{{ cname }}		CNAME	{{ dest }}
 {% endfor %}
-
-webmail			CNAME	eimhir
 
 ; Services
 _imap._tcp		SRV	0 1 143  {{ mailserver }}.

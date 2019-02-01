@@ -39,21 +39,15 @@ zones:
   - wafflecopter.net
   - xn--cat-rma.eu
 mail_zones:
-  - gaughan.me
-  - roguebeauty.org
-  - talideon.eu
-  - tripletrek.com
+  - gaughan.ie
 zone_cnames:
   canthack.it:
-    - i
+    i: "@"
   talideon.com:
-    - www
-    - repos
-    - projects
-    - reader
-    - bethisad
-    - mirrors
-    - ports
+    bethisad: "@"
+    mirrors: "@"
+    reader: eimhir
+    webmail: eimhir
 secondary_patterns:
   slave_niallk:
     ipv4: 185.2.64.125 # 46.22.136.104
