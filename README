@@ -1,6 +1,28 @@
+=====
 zones
 =====
 
 DNS zones for my domains and managed by my servers.
+
+TSIG generation
+===============
+
+The TSIG secret just has to be a random string. I use the following::
+
+   head -c $(expr 384 / 8) /dev/urandom | base64
+
+That generates a 384-bit secret and base-64 encodes it. This ought to be long
+enough, as RFC2845__ states that the key length should be at lesst as long as
+the message digest. For the algorithm, I currently use 'hmac-sha256'.
+
+.. __: https://tools.ietf.org/html/rfc2845
+
+The choice of a 384-bit shared secret is mainly because it's a number that
+divides evenly into 8 and 6, meaning you don't get a bunch of padding at the
+end of the base-64 string.
+
+For key ID generation, do::
+
+   echo $(uuidgen | tr A-Z a-z).talideon.com.
 
 .. vim:set ft=rst:
