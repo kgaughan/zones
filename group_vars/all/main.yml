@@ -11,6 +11,7 @@ haddrs:
     ipv4: 45.55.149.240
     ipv6: 2604:a880:800:10::716:6001
     tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
+    secondary: true
   manann.talideon.com:  # My Hetzner box.
     ipv4: 5.9.82.71
     ipv6: 2a01:4f8:162:4e::1:1
@@ -19,13 +20,16 @@ haddrs:
     ipv4: 159.203.59.98
     ipv6: 2604:a880:cad:d0::c6a:a001
     tsig: 481d6d76-d2bf-4c4c-9384-4d98851ab1b1.talideon.com.
+    secondary: true
   floyd.moybella.net:  # One of Niall's servers.
     ipv4: 176.9.85.147
     ipv6: 2a01:4f8:151:238f::2
     tsig: 5550e60c-681b-45c7-ad62-8f7d1eba56a3.talideon.com.
+    secondary: true
   ns2.blacknightsolutions.com:
     ipv4: 78.153.202.4
     ipv6: 2a01:a8:dc2:33::33
+    secondary: true
 hroles:
   web: cian.talideon.com
   mail: cian.talideon.com
