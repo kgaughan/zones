@@ -51,7 +51,8 @@ zone_cnames:
     i: "@"
   talideon.com:
     bethisad: "@"
-    mirrors: "@"
+    mirrors: manann
+    dav: manann
     reader: eimhir
     webmail: eimhir
 secondary_patterns: {}
