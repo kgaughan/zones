@@ -58,6 +58,7 @@ zone_cnames:
     mirrors: manann
     dav: manann
     reader: eimhir
+    repos: manann
     webmail: eimhir
 secondary_patterns: {}
 secondary_zones: {}
