@@ -54,7 +54,7 @@ zone_cnames:
   canthack.it:
     i: "@"
   talideon.com:
-    bethisad: "@"
+    bethisad: cian
     mirrors: manann
     dav: manann
     reader: eimhir
