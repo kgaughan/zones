@@ -12,8 +12,8 @@ $TTL	3600
 			NS	ns2.talideon.com.
 			NS	ns3.talideon.com.
 			NS	ns4.talideon.com.
-			A	{{ haddrs[hroles.web].ipv4 }}
-			AAAA	{{ haddrs[hroles.web].ipv6 }}
+			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
+			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
 {% if item in mail_zones %}
 			MX	40 {{ mailserver }}.
 			TXT	"{{ spf }}"
