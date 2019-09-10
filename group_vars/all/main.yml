@@ -33,6 +33,8 @@ haddrs:
 hroles:
   web: cian.talideon.com
   mail: cian.talideon.com
+hosts:
+  canthack.it: lir.talideon.com
 zones:
   - questions.ie
   - kick.ie
