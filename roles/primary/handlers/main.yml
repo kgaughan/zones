@@ -1,3 +1,6 @@
 ---
 - name: reload nsd
   command: nsd-control reconfig
+
+- name: reload zones
+  command: nsd-control reload

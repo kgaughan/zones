@@ -11,6 +11,7 @@
   when: st.stat.exists
   notify:
     - reload nsd
+    - reload zones
 
 - name: generate basic zone files {{ item }}
   template:
@@ -19,3 +20,4 @@
   when: not st.stat.exists
   notify:
     - reload nsd
+    - reload zones
