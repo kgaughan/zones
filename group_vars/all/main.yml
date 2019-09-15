@@ -36,20 +36,25 @@ hroles:
 hosts:
   canthack.it: lir.talideon.com
 zones:
-  - questions.ie
-  - kick.ie
   - canthack.it
+  - xn--cat-rma.eu
   - gaughan.ie
   - gaughan.me
   - ismulleyonatrain.com
   - keithgaughan.ie
+  - kick.ie
+  - libtls.com
+  - libtls.org
+  - questions.ie
   - roguebeauty.org
   - stereochro.me
+  - systemsatelier.com
   - talideon.com
   - talideon.eu
   - tripletrek.com
   - wafflecopter.net
-  - xn--cat-rma.eu
+  - zoicon.com
+  - zoicon.org
 mail_zones:
   - gaughan.ie
 zone_cnames:

@@ -6,9 +6,10 @@ cian.talideon.com ansible_user=freebsd
 eimhir.talideon.com
 lir.talideon.com
 cian.talideon.com
+manann.talideon.com
 
 [freebsd:vars]
-ansible_python_interpreter=/usr/local/bin/python
+ansible_python_interpreter=/usr/local/bin/python3
 
 [primaries]
 lir.talideon.com
