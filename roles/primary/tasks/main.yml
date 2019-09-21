@@ -7,7 +7,7 @@
     - reload nsd
     - reload zones
 
-- name: generate basic zone files {{ item }}
+- name: generate basic zone files
   template:
     src: basic.zone.j2
     dest: '{{ nsd_dir }}/zones/{{ item }}.zone'
