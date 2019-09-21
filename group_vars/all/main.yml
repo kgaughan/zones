@@ -67,5 +67,3 @@ zone_cnames:
     reader: eimhir
     repos: manann
     webmail: eimhir
-secondary_patterns: {}
-secondary_zones: {}
