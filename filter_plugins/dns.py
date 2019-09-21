@@ -21,11 +21,11 @@ def get_serial(fqdn):
 
 
 def next_serial(fqdn):
-    current_serial = str(get_serial(fqdn))
+    current_serial = get_serial(fqdn)
     today = datetime.datetime.utcnow().strftime("%Y%m%d")
-    if current_serial is None or current_serial[:8] != today:
+    if current_serial is None or not str(current_serial).startswith(today):
         return today + "00"
-    return str(int(current_serial) + 1)
+    return str(current_serial + 1)
 
 
 class FilterModule(object):
