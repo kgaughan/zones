@@ -25,4 +25,14 @@ For key ID generation, do::
 
    echo $(uuidgen | tr A-Z a-z).talideon.com.
 
+SOA serial number generation
+============================
+
+This requires dnspython__ to be present, which will typically be installed as a
+dependency of Ansible anyway. No checks are currently performed to see if the
+zone has actually changed. Something like ``ldns-compare-zones`` could be used
+for this.
+
+.. __: http://www.dnspython.org/
+
 .. vim:set ft=rst:
