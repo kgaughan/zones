@@ -13,6 +13,9 @@ pattern:
 {% endif %}
 {% endfor %}
 
+zone:
+	name: "talideon.com"
+	include-pattern: secondary
 {% for zone in zones %}
 zone:
 	name: "{{ zone }}"

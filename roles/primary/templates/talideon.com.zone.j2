@@ -1,8 +1,8 @@
-$ORIGIN	{{ item }}.
+$ORIGIN	talideon.com.
 $TTL	3600
 
 @			SOA	ns1 k.stereochro.me. (
-				{{ item | next_serial }} ; serial
+				{{ "talideon.com" | next_serial }} ; serial
 				6h ; refresh
 				1h ; retry
 				1w ; expire
@@ -12,9 +12,9 @@ $TTL	3600
 			NS	ns2
 			NS	ns3
 			NS	ns4
-			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
-			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
-			MX	40 {{ mailserver }}.
+			A	{{ haddrs[hroles.web].ipv4 }}
+			AAAA	{{ haddrs[hroles.web].ipv6 }}
+			MX	40 mail.talideon.com.
 			TXT	"{{ spf }}"
 			SPF	"{{ spf }}"
 			CAA	0 issue "letsencrypt.org"
@@ -40,26 +40,20 @@ ns4			AAAA	{{ haddrs['cian.talideon.com'].ipv6 }}
 {{ name }}		SPF	"v=spf1 a mx -all"
 {% endfor %}
 
-cian			SSHFP	1 1 b3c27d0efecee20d4c00e3f5f3cd2a61ca02ad82
-cian			SSHFP	1 2 7ad47957fbb90f54a299f29efbde82066f64744cb5c50e106af7da0d082821cf
-cian			SSHFP	2 1 9d3b92fd93e5f8803c2a889d73806a84bfc7d670
-cian			SSHFP	2 2 f8ef86bb095339039496b875ae2dfc8a27bb6b0f8d32f40990911d3d8e935c1d
-cian			SSHFP	3 1 2f1baf6bf8d66c0615a205b7628475a419563f4b
-cian			SSHFP	3 2 21ec08609d41e94cad66a2cc06b8b47bb753a2400aeba2221ed9938979f6436b
-
 ; Aliases.
 www			CNAME	@
-{% for cname, dest in zone_cnames.get(item, {}).items() %}
-{{ cname }}		CNAME	{{ dest }}
-{% endfor %}
+bethisad		CNAME	cian
+mirrors			CNAME	manann
+dav			CNAME	manann
+reader			CNAME	eimhir
+repos			CNAME	manann
+webmail			CNAME	eimhir
 
 ; Services
-_imap._tcp		SRV	0 1 143  {{ mailserver }}.
-_imaps._tcp		SRV	0 1 993  {{ mailserver }}.
-_submission._tcp	SRV	0 1 587  {{ mailserver }}.
-_sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
-_xmpp-client._tcp	SRV	0 1 5222 {{ item }}.
-_xmpp-server._tcp	SRV	0 1 5269 {{ item }}.
+_imap._tcp		SRV	0 1 143  mail.talideon.com.
+_imaps._tcp		SRV	0 1 993  mail.talideon.com.
+_submission._tcp	SRV	0 1 587  mail.talideon.com.
+_sieve._tcp		SRV	0 1 4190 mail.talideon.com.
 
 ; DANE
 ; According to https://tools.ietf.org/html/rfc7672, for SMTP, we can't use
@@ -72,14 +66,9 @@ _xmpp-server._tcp	SRV	0 1 5269 {{ item }}.
 ; https://netfuture.ch/2013/06/how-to-create-dnssec-dane-tlsa-entries/
 _25._tcp.mail		CNAME	_dane ; SMTP
 _143._tcp.mail		CNAME	_dane ; IMAP + STARTTLS
-_443._tcp		CNAME	_dane ; HTTPS (talideon.com)
-_443._tcp.www		CNAME	_dane ; HTTPS (www.talideon.com)
-_443._tcp.mail		CNAME	_dane ; HTTPS (mail.talideon.com)
 _587._tcp.mail		CNAME	_dane ; SMTP Submission
 _993._tcp.mail		CNAME	_dane ; IMAPS
 _4190._tcp.mail		CNAME	_dane ; Sieve
-_5222._tcp		CNAME	_dane ; XMPP Client
-_5269._tcp		CNAME	_dane ; XMPP Server
 
 _dane			TLSA	3 1 1 49fc982789dbfdc4edc07b22902f84b9bd5e2a3ef1b5f19fd91ba4ca7b664b34
 

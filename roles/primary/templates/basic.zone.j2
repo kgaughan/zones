@@ -15,9 +15,18 @@ $TTL	3600
 			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
 			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
 {% if item in mail_zones %}
-			MX	40 {{ mailserver }}.
+			MX	40 mail.talideon.com.
 			TXT	"{{ spf }}"
 			SPF	"{{ spf }}"
+{% if "pubkey" in mail_zones[item] %}
+default._domainkey	TXT	"v=DKIM1; k=rsa; p={{ mail_zones[item].pubkey }}"
+_adsp._domainkey	TXT	"dkim=unknown"
+{% endif %}
+; Services
+_imap._tcp		SRV	0 1 143  mail.talideon.com.
+_imaps._tcp		SRV	0 1 993  mail.talideon.com.
+_submission._tcp	SRV	0 1 587  mail.talideon.com.
+_sieve._tcp		SRV	0 1 4190 mail.talideon.com.
 {% else %}
 			TXT	"v=spf1 -all"
 			SPF	"v=spf1 -all"
@@ -28,13 +37,5 @@ www			CNAME	@
 {% for cname, dest in zone_cnames.get(item, {}).items() %}
 {{ cname }}		CNAME	{{ dest }}
 {% endfor %}
-
-{% if item in mail_zones %}
-; Services
-_imap._tcp		SRV	0 1 143  {{ mailserver }}.
-_imaps._tcp		SRV	0 1 993  {{ mailserver }}.
-_submission._tcp	SRV	0 1 587  {{ mailserver }}.
-_sieve._tcp		SRV	0 1 4190 {{ mailserver }}.
-{% endif %}
 
 ; vim:set filetype=dns ts=8 sw=8 sts=8 noet:

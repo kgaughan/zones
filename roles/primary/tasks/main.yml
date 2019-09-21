@@ -1,6 +1,20 @@
 ---
-- include_tasks: templating.yml
+- name: generate custom zone file for talideon.com
+  template:
+    src: "talideon.com.zone.j2"
+    dest: '{{ nsd_dir }}/zones/talideon.com.zone'
+  notify:
+    - reload nsd
+    - reload zones
+
+- name: generate basic zone files {{ item }}
+  template:
+    src: basic.zone.j2
+    dest: '{{ nsd_dir }}/zones/{{ item }}.zone'
   with_items: '{{ zones }}'
+  notify:
+    - reload nsd
+    - reload zones
 
 - name: generate primary zones.conf
   template:

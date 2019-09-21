@@ -1,7 +1,6 @@
 ---
 nsd_dir: /usr/local/etc/nsd
 spf: "v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
-mailserver: mail.talideon.com
 haddrs:
   lir.talideon.com:  # My Blacknight box.
     ipv4: 78.153.202.217
@@ -49,21 +48,15 @@ zones:
   - roguebeauty.org
   - stereochro.me
   - systemsatelier.com
-  - talideon.com
   - talideon.eu
   - tripletrek.com
   - wafflecopter.net
   - zoicon.com
   - zoicon.org
 mail_zones:
-  - gaughan.ie
+  gaughan.ie: {}
+  stereochro.me:
+    pubkey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCBUE1JLq4qpkkTKOtRqKQmKgJB0d+5B+kq1jW1ekZScz64UBhs2lF1Rmj3PWzcerSszwLvaZu329ynHIbEJT8Utk9v3Mt55Z7Svzv7Fub/jLIiDsQjlUhtpBzjB0P2gJtia53HmAO44C1eZdK+fU1Gqst3hcPRX9N/GM9umWElQIDAQAB
 zone_cnames:
   canthack.it:
     i: "@"
-  talideon.com:
-    bethisad: cian
-    mirrors: manann
-    dav: manann
-    reader: eimhir
-    repos: manann
-    webmail: eimhir
