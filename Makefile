@@ -6,7 +6,7 @@ clean:
 	find . -name \*.retry -type f -delete
 
 zones:
-	ansible-playbook -i $(HOSTS) zones.yml --ask-vault-pass
+	ansible-playbook -i $(HOSTS) zones.yml --ask-vault-pass --diff
 
 secondaries:
 	ansible-playbook -i $(HOSTS) -l secondaries zones.yml --ask-vault-pass
