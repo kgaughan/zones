@@ -71,10 +71,12 @@ zones:
 
 # Zones that can send mail. I haven't set up DKIM public keys for all zones yet.
 mail_zones:
-  gaughan.ie: {}
+  gaughan.ie:
+    pubkey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCvjI2/opi/n2ZRdDBecmubJ+ebiH1V3EOZ2fqDVbbCYJJA2zwC/jSxfUYy5MPwfOJg1gId55fG5gZ67NNsgSHjwPzJD4OXMSVAx45CbXch1aovAGuYTV9fIj8PsQqIjH54J9z7+7z3xcrCbF0KZRhAna7UDOAmDaDuC6CvECRXWQIDAQAB
   stereochro.me:
     pubkey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCBUE1JLq4qpkkTKOtRqKQmKgJB0d+5B+kq1jW1ekZScz64UBhs2lF1Rmj3PWzcerSszwLvaZu329ynHIbEJT8Utk9v3Mt55Z7Svzv7Fub/jLIiDsQjlUhtpBzjB0P2gJtia53HmAO44C1eZdK+fU1Gqst3hcPRX9N/GM9umWElQIDAQAB
-  talideon.com: {}
+  talideon.com:
+    pubkey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDJNsY7P1arEpEsLDhZUj+pqPJhcTx6ZktNBkn7dhmeYmdGrlj/353DEChz/40aC6Z2trAsxAIKBiGmWBvMHdCWwuDnptW6E86Oo3E7C3SLyy/a31mx8Sb9NEl9howLzgxIwTyU0Z+LNKOZR2IR5cc4djny46oi+x3HWzG5KK2+NwIDAQAB
 
 # CNAMEs to be generated under certain zones.
 zone_cnames:
