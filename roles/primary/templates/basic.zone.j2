@@ -14,6 +14,7 @@ $TTL	3600
 			NS	ns4.talideon.com.
 			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
 			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
+			CAA	0 issue "letsencrypt.org"
 {% if item in mail_zones %}
 			MX	40 mail.talideon.com.
 			TXT	"{{ spf }}"
@@ -22,7 +23,6 @@ $TTL	3600
 default._domainkey	TXT	"v=DKIM1; k=rsa; p={{ mail_zones[item].pubkey }}"
 _adsp._domainkey	TXT	"dkim=unknown"
 {% endif %}
-; Services
 _imap._tcp		SRV	0 1 143  mail.talideon.com.
 _imaps._tcp		SRV	0 1 993  mail.talideon.com.
 _submission._tcp	SRV	0 1 587  mail.talideon.com.
@@ -31,11 +31,21 @@ _sieve._tcp		SRV	0 1 4190 mail.talideon.com.
 			TXT	"v=spf1 -all"
 			SPF	"v=spf1 -all"
 {% endif %}
-			CAA	0 issue "letsencrypt.org"
 
 www			CNAME	@
 {% for cname, dest in zone_cnames.get(item, {}).items() %}
 {{ cname }}		CNAME	{{ dest }}
 {% endfor %}
 
+{% for host, about in haddrs.items() %}
+{% if host.endswith("." + item) %}
+{% set label = host.split('.', 1)[0] %}
+{{ label }}		A	{{ about.ipv4 }}
+{{ label }}		AAAA	{{ about.ipv6 }}
+{{ label }}		TXT	"v=spf1 a mx -all"
+{{ label }}		SPF	"v=spf1 a mx -all"
+{% endif %}
+{% endfor %}
+
+{% block extra %}{% endblock %}
 ; vim:set filetype=dns ts=8 sw=8 sts=8 noet:

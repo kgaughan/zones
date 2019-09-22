@@ -1,6 +1,8 @@
 ---
 nsd_dir: /usr/local/etc/nsd
 spf: "v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
+
+# Various hosts that get used as nameservers, mailservers, &c.
 haddrs:
   lir.talideon.com:  # My Blacknight box.
     ipv4: 78.153.202.217
@@ -29,11 +31,24 @@ haddrs:
     ipv4: 78.153.202.4
     ipv6: 2a01:a8:dc2:33::33
     secondary: true
+
+# Default hosts for certain roles.
 hroles:
   web: cian.talideon.com
   mail: cian.talideon.com
+
+# Overrides for the 'web' role.
 hosts:
   canthack.it: lir.talideon.com
+
+# Nameservers in order.
+nameservers:
+  - lir.talideon.com
+  - floyd.moybella.net
+  - ns2.blacknightsolutions.com
+  - cian.talideon.com
+
+# Zones under management (except talideon.com).
 zones:
   - canthack.it
   - xn--cat-rma.eu
@@ -53,10 +68,22 @@ zones:
   - wafflecopter.net
   - zoicon.com
   - zoicon.org
+
+# Zones that can send mail. I haven't set up DKIM public keys for all zones yet.
 mail_zones:
   gaughan.ie: {}
   stereochro.me:
     pubkey: MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDCBUE1JLq4qpkkTKOtRqKQmKgJB0d+5B+kq1jW1ekZScz64UBhs2lF1Rmj3PWzcerSszwLvaZu329ynHIbEJT8Utk9v3Mt55Z7Svzv7Fub/jLIiDsQjlUhtpBzjB0P2gJtia53HmAO44C1eZdK+fU1Gqst3hcPRX9N/GM9umWElQIDAQAB
+  talideon.com: {}
+
+# CNAMEs to be generated under certain zones.
 zone_cnames:
   canthack.it:
     i: "@"
+  talideon.com:
+    bethisad: cian
+    mirrors: manann
+    dav: manann
+    reader: eimhir
+    repos: manann
+    webmail: eimhir

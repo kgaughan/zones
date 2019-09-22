@@ -1,59 +1,15 @@
-$ORIGIN	talideon.com.
-$TTL	3600
+{% set item = "talideon.com" %}
+{% extends "basic.zone.j2" %}
 
-@			SOA	ns1 k.stereochro.me. (
-				{{ "talideon.com" | next_serial }} ; serial
-				6h ; refresh
-				1h ; retry
-				1w ; expire
-				1d ; minimum
-				)
-			NS	ns1
-			NS	ns2
-			NS	ns3
-			NS	ns4
-			A	{{ haddrs[hroles.web].ipv4 }}
-			AAAA	{{ haddrs[hroles.web].ipv6 }}
-			MX	40 mail.talideon.com.
-			TXT	"{{ spf }}"
-			SPF	"{{ spf }}"
-			CAA	0 issue "letsencrypt.org"
-
+{% block extra %}
 mail			A	{{ haddrs[hroles.mail].ipv4 }}
 mail			AAAA	{{ haddrs[hroles.mail].ipv6 }}
 
 ; Nameservers
-ns1			A	{{ haddrs['lir.talideon.com'].ipv4 }}
-ns1			AAAA	{{ haddrs['lir.talideon.com'].ipv6 }}
-ns2			A	{{ haddrs['floyd.moybella.net'].ipv4 }}
-ns2			AAAA	{{ haddrs['floyd.moybella.net'].ipv6 }}
-ns3			A	{{ haddrs['ns2.blacknightsolutions.com'].ipv4 }}
-ns3			AAAA	{{ haddrs['ns2.blacknightsolutions.com'].ipv6 }}
-ns4			A	{{ haddrs['cian.talideon.com'].ipv4 }}
-ns4			AAAA	{{ haddrs['cian.talideon.com'].ipv6 }}
-
-; Servers.
-{% for name in ['lir', 'cian', 'manann', 'eimhir'] %}
-{{ name }}		A	{{ haddrs[name + '.talideon.com'].ipv4 }}
-{{ name }}		AAAA	{{ haddrs[name + '.talideon.com'].ipv6 }}
-{{ name }}		TXT	"v=spf1 a mx -all"
-{{ name }}		SPF	"v=spf1 a mx -all"
+{% for host in nameservers %}
+ns{{ loop.index + 1 }}	A	{{ haddrs[host].ipv4 }}
+ns{{ loop.index + 1 }}	AAAA	{{ haddrs[host].ipv6 }}
 {% endfor %}
-
-; Aliases.
-www			CNAME	@
-bethisad		CNAME	cian
-mirrors			CNAME	manann
-dav			CNAME	manann
-reader			CNAME	eimhir
-repos			CNAME	manann
-webmail			CNAME	eimhir
-
-; Services
-_imap._tcp		SRV	0 1 143  mail.talideon.com.
-_imaps._tcp		SRV	0 1 993  mail.talideon.com.
-_submission._tcp	SRV	0 1 587  mail.talideon.com.
-_sieve._tcp		SRV	0 1 4190 mail.talideon.com.
 
 ; DANE
 ; According to https://tools.ietf.org/html/rfc7672, for SMTP, we can't use
@@ -71,5 +27,5 @@ _993._tcp.mail		CNAME	_dane ; IMAPS
 _4190._tcp.mail		CNAME	_dane ; Sieve
 
 _dane			TLSA	3 1 1 49fc982789dbfdc4edc07b22902f84b9bd5e2a3ef1b5f19fd91ba4ca7b664b34
-
+{% endblock %}
 ; vim:set filetype=dns ts=8 sw=8 sts=8 noet:
