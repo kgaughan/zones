@@ -21,7 +21,6 @@ $TTL	3600
 			SPF	"{{ spf }}"
 {% if "pubkey" in mail_zones[item] %}
 default._domainkey	TXT	"v=DKIM1; k=rsa; p={{ mail_zones[item].pubkey }}"
-_adsp._domainkey	TXT	"dkim=unknown"
 {% endif %}
 _imap._tcp		SRV	0 1 143  mail.talideon.com.
 _imaps._tcp		SRV	0 1 993  mail.talideon.com.
