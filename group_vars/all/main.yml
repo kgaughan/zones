@@ -40,13 +40,14 @@ hroles:
 # Overrides for the 'web' role.
 hosts:
   canthack.it: lir.talideon.com
+  stereochro.me: lir.talideon.com
 
 # Nameservers in order.
 nameservers:
   - lir.talideon.com
   - floyd.moybella.net
   - ns2.blacknightsolutions.com
-  - cian.talideon.com
+  - eimhir.talideon.com
 
 # Zones under management (except talideon.com).
 zones:
