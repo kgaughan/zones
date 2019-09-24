@@ -8,7 +8,9 @@ mail			AAAA	{{ haddrs[hroles.mail].ipv6 }}
 ; Nameservers
 {% for host in nameservers %}
 ns{{ loop.index }}	A	{{ haddrs[host].ipv4 }}
+{% if 'ipv6' in haddrs[host] %}
 ns{{ loop.index }}	AAAA	{{ haddrs[host].ipv6 }}
+{% endif %}
 {% endfor %}
 
 ; DANE

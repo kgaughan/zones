@@ -7,10 +7,13 @@ pattern:
 	# {{ name }}
 {% if 'ipv6' in fields %}
 	notify: {{ fields.ipv6 }} {{ fields.get('tsig', 'NOKEY') }}
+{% elif 'ipv4' in fields %}
+	notify: {{ fields.ipv4 }} {{ fields.get('tsig', 'NOKEY') }}
+{% endif %}
+{% if 'ipv6' in fields %}
 	provide-xfr: {{ fields.ipv6 }} {{ fields.get('tsig', 'NOKEY') }}
 {% endif %}
 {% if 'ipv4' in fields %}
-	notify: {{ fields.ipv4 }} {{ fields.get('tsig', 'NOKEY') }}
 	provide-xfr: {{ fields.ipv4 }} {{ fields.get('tsig', 'NOKEY') }}
 {% endif %}
 {% endif %}

@@ -5,10 +5,13 @@ pattern:
 {% for host in groups['primaries'] %}
 {% if 'ipv6' in haddrs[host] %}
 	allow-notify: {{ haddrs[host].ipv6 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
-	request-xfr: {{ haddrs[host].ipv6 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
 {% endif %}
 {% if 'ipv4' in haddrs[host] %}
 	allow-notify: {{ haddrs[host].ipv4 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
+{% endif %}
+{% if 'ipv6' in haddrs[host] %}
+	request-xfr: {{ haddrs[host].ipv6 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
+{% elif 'ipv4' in haddrs[host] %}
 	request-xfr: {{ haddrs[host].ipv4 }} {{ haddrs[host].get('tsig', 'NOKEY') }}
 {% endif %}
 {% endfor %}
