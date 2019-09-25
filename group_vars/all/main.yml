@@ -39,6 +39,7 @@ hroles:
 # Overrides for the 'web' role.
 hosts:
   canthack.it: lir.talideon.com
+  gaughan.ie: lir.talideon.com
   stereochro.me: lir.talideon.com
 
 # Nameservers in order.
