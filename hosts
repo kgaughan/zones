@@ -1,11 +1,9 @@
 eimhir.talideon.com
 lir.talideon.com
-cian.talideon.com ansible_user=freebsd
 
 [freebsd]
 eimhir.talideon.com
 lir.talideon.com
-cian.talideon.com
 manann.talideon.com
 
 [freebsd:vars]
@@ -16,4 +14,3 @@ lir.talideon.com
 
 [secondaries]
 eimhir.talideon.com
-cian.talideon.com
