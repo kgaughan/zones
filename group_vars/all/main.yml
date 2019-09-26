@@ -33,14 +33,15 @@ haddrs:
 
 # Default hosts for certain roles.
 hroles:
-  web: cian.talideon.com
-  mail: cian.talideon.com
+  web: lir.talideon.com
+  mail: manann.talideon.com
 
 # Overrides for the 'web' role.
 hosts:
   canthack.it: lir.talideon.com
   gaughan.ie: lir.talideon.com
   stereochro.me: lir.talideon.com
+  talideon.com: lir.talideon.com
 
 # Nameservers in order.
 nameservers:
