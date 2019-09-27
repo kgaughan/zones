@@ -1,6 +1,5 @@
 ---
 nsd_dir: /usr/local/etc/nsd
-spf: "v=spf1 ip4:5.9.82.71 ip6:2a01:4f8:162:4e::1:1 a mx -all"
 
 # Various hosts that get used as nameservers, mailservers, &c.
 haddrs:
