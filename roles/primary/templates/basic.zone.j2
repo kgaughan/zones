@@ -5,7 +5,7 @@ $TTL	3600
 				{{ item | next_serial }} ; serial
 				6h ; refresh
 				1h ; retry
-				1w ; expire
+				2w ; expire
 				1d ; minimum
 				)
 			NS	ns1.talideon.com.
