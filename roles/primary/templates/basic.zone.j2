@@ -21,6 +21,7 @@ $TTL	3600
 			SPF	"v=spf1 a mx -all"
 {% if "pubkey" in mail_zones[item] %}
 default._domainkey	TXT	"v=DKIM1; k=rsa; p={{ mail_zones[item].pubkey }}"
+_dmarc			TXT	"v=DMARC1; p=quarantine; rua=mailto:abuse@{{ item }}; ruf=mailto:abuse@{{ item }}; adkim=r; aspf=r; rf=afrf"
 {% endif %}
 _imap._tcp		SRV	0 1 143  mail.talideon.com.
 _imaps._tcp		SRV	0 1 993  mail.talideon.com.
