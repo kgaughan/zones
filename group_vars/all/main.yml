@@ -48,7 +48,6 @@ nameservers:
 # Zones under management (except talideon.com).
 zones:
   - canthack.it
-  - xn--cat-rma.eu
   - gaughan.ie
   - gaughan.me
   - ismulleyonatrain.com
