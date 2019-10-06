@@ -23,6 +23,7 @@ haddrs:
     secondary: true
   ns2.blacknightsolutions.com:
     ipv4: 78.153.202.4
+    ipv6: 2a01:a8:dc2:33::33
     secondary: true
 
 # Default hosts for certain roles.
