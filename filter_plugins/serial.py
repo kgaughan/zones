@@ -3,15 +3,33 @@ DNS utilities.
 """
 
 import datetime
+import random
+import socket
 
 import dns.exception
 import dns.resolver
 
 
+def query(fqdn, qname, nss=None):
+    resolver = dns.resolver.Resolver()
+    if nss:
+        resolver.nameservers = nss
+    return resolver.query(fqdn, qname)
+
+
+def query_nameservers(fqdn, source=None):
+    return [answer.target.to_text() for answer in query(fqdn, "NS", source)]
+
+
 def get_serial(fqdn):
-    res = dns.resolver.Resolver()
+    # Get the authoritative nameservers, resolving them to IPs.
+    nss = []
+    for ns in query_nameservers(fqdn):
+        for addr in socket.getaddrinfo(ns, 0):
+            nss.append(addr[4][0])
+
     try:
-        answers = res.query(fqdn, "SOA")
+        answers = query(fqdn, "SOA", nss)
     except dns.exception.DNSException as e:
         pass
     else:
