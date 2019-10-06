@@ -32,7 +32,8 @@ _sieve._tcp		SRV	0 1 4190 mail.talideon.com.
 			SPF	"v=spf1 -all"
 {% endif %}
 
-www			CNAME	@
+www			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
+www			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
 {% for cname, dest in zone_cnames.get(item, {}).items() %}
 {{ cname }}		CNAME	{{ dest }}
 {% endfor %}
