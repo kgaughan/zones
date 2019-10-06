@@ -17,19 +17,17 @@ def query(fqdn, qname, nss=None):
     return resolver.query(fqdn, qname)
 
 
-def query_nameservers(fqdn, source=None):
-    return [answer.target.to_text() for answer in query(fqdn, "NS", source)]
+def query_nameservers(fqdn):
+    nss = []
+    for answer in query(fqdn, "NS"):
+        for addr in socket.getaddrinfo(answer.target.to_text(), "domain"):
+            nss.append(addr[4][0])
+    return nss
 
 
 def get_serial(fqdn):
-    # Get the authoritative nameservers, resolving them to IPs.
-    nss = []
-    for ns in query_nameservers(fqdn):
-        for addr in socket.getaddrinfo(ns, 0):
-            nss.append(addr[4][0])
-
     try:
-        answers = query(fqdn, "SOA", nss)
+        answers = query(fqdn, "SOA", query_nameservers(fqdn))
     except dns.exception.DNSException as e:
         pass
     else:
