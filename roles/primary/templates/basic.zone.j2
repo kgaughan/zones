@@ -19,6 +19,9 @@ $TTL	3600
 			MX	40 mail.talideon.com.
 			TXT	"v=spf1 a mx -all"
 			SPF	"v=spf1 a mx -all"
+{% if "postmaster_tools" in mail_zones[item] %}
+			TXT	"google-site-verification={{ mail_zones[item].postmaster_tools }}"
+{% endif %}
 {% if "pubkey" in mail_zones[item] %}
 default._domainkey	TXT	"v=DKIM1; k=rsa; p={{ mail_zones[item].pubkey }}"
 _dmarc			TXT	"v=DMARC1; p=quarantine; rua=mailto:abuse@{{ item }}; ruf=mailto:abuse@{{ item }}; adkim=r; aspf=r; rf=afrf"
