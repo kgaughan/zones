@@ -88,3 +88,4 @@ zone_cnames:
     reader: eimhir
     repos: manann
     webmail: eimhir
+    home: talideon.duckdns.org.
