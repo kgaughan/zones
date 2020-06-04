@@ -61,7 +61,6 @@ zones:
   - stereochro.me
   - systemsatelier.com
   - talideon.eu
-  - tripletrek.com
   - wafflecopter.net
   - zoicon.com
   - zoicon.org
@@ -89,3 +88,5 @@ zone_cnames:
     repos: manann
     webmail: eimhir
     home: talideon.duckdns.org.
+  gaughan.ie:
+    keith: "@"
