@@ -18,3 +18,22 @@
     mode: 0600
   notify:
     - reload nsd
+
+# local_unbound is part of the FreeBSD base system. This is just to be sure.
+- name: ensure unbound extra configuration directory exists
+  file:
+    path: "{{ unbound_dir }}/conf.d"
+    state: directory
+    owner: unbound
+    group: unbound
+    mode: 0755
+
+- name: generate stub zones
+  template:
+    src: stubs.conf.j2
+    dest: "{{ unbound_dir }}/conf.d/stubs.conf"
+    owner: unbound
+    group: unbound
+    mode: 0644
+  notify:
+    - reload unbound
