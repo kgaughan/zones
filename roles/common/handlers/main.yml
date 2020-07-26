@@ -3,8 +3,3 @@
   service:
     name: nsd
     state: reloaded
-
-- name: reload unbound
-  service:
-    name: local_unbound
-    state: reloaded

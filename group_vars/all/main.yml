@@ -1,6 +1,5 @@
 ---
 nsd_dir: /usr/local/etc/nsd
-unbound_dir: /etc/unbound
 
 # Various hosts that get used as nameservers, mailservers, &c.
 haddrs:
