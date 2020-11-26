@@ -9,7 +9,7 @@ TSIG generation
 
 The TSIG secret just has to be a random string. I use the following::
 
-   head -c $(expr 384 / 8) /dev/urandom | base64
+    head -c $(expr 384 / 8) /dev/urandom | base64
 
 That generates a 384-bit secret and base-64 encodes it. This ought to be long
 enough, as RFC2845__ states that the key length should be at lesst as long as
@@ -23,7 +23,7 @@ end of the base-64 string.
 
 For key ID generation, do::
 
-   echo $(uuidgen | tr A-Z a-z).talideon.com.
+    echo $(uuidgen | tr A-Z a-z).talideon.com.
 
 SOA serial number generation
 ============================

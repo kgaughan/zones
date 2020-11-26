@@ -49,10 +49,8 @@ nameservers:
 zones:
   - canthack.it
   - gaughan.ie
-  - gaughan.me
-  - ismulleyonatrain.com
-  - keithgaughan.ie
   - keithgaughan.co.uk
+  - keithgaughan.ie
   - kick.ie
   - libtls.com
   - libtls.org
@@ -63,7 +61,6 @@ zones:
   - talideon.eu
   - wafflecopter.net
   - zoicon.com
-  - zoicon.org
 
 # Zones that can send mail. I haven't set up DKIM public keys for all zones yet.
 mail_zones:
