@@ -33,6 +33,8 @@ _sieve._tcp		SRV	0 1 4190 mail.talideon.com.
 {% else %}
 			TXT	"v=spf1 -all"
 			SPF	"v=spf1 -all"
+default._domainkey	TXT     "v=DKIM1; p="
+_dmarc			TXT     "v=DMARC1; p=reject"
 {% endif %}
 
 www			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
@@ -44,10 +46,12 @@ www			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
 {% for host, about in haddrs.items() %}
 {% if host.endswith("." + item) %}
 {% set label = host.split('.', 1)[0] %}
-{{ label }}		A	{{ about.ipv4 }}
-{{ label }}		AAAA	{{ about.ipv6 }}
-{{ label }}		TXT	"v=spf1 a mx -all"
-{{ label }}		SPF	"v=spf1 a mx -all"
+{{ label }}			A	{{ about.ipv4 }}
+{{ label }}			AAAA	{{ about.ipv6 }}
+{{ label }}			TXT	"v=spf1 a mx -all"
+{{ label }}			SPF	"v=spf1 a mx -all"
+default._domainkey.{{ label }}	TXT     "v=DKIM1; p="
+_dmarc.{{ label }}		TXT     "v=DMARC1; p=reject"
 {% endif %}
 {% endfor %}
 
