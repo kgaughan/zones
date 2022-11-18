@@ -20,8 +20,11 @@ def query(fqdn, qname, nss=None):
 def query_nameservers(fqdn):
     nss = []
     for answer in query(fqdn, "NS"):
-        for addr in socket.getaddrinfo(answer.target.to_text(), "domain"):
-            nss.append(addr[4][0])
+        nss.extend(
+            addr[4][0]
+            for addr in socket.getaddrinfo(answer.target.to_text(), "domain")
+        )
+
     return nss
 
 
@@ -40,7 +43,7 @@ def next_serial(fqdn):
     current_serial = get_serial(fqdn)
     today = datetime.datetime.utcnow().strftime("%Y%m%d")
     if current_serial is None or not str(current_serial).startswith(today):
-        return today + "00"
+        return f"{today}00"
     return str(current_serial + 1)
 
 
