@@ -21,6 +21,7 @@ haddrs:
     ipv6: 2a01:4f8:151:238f::2
     tsig: 5550e60c-681b-45c7-ad62-8f7d1eba56a3.talideon.com.
     secondary: true
+  # https://dnsmgr.blacknight.ie/
   ns2.blacknightsolutions.com:
     ipv4: 78.153.202.4
     ipv6: 2a01:a8:dc2:33::33
@@ -29,7 +30,7 @@ haddrs:
 # Default hosts for certain roles.
 hroles:
   web: lir.talideon.com
-  mail: manann.talideon.com
+  mail: lir.talideon.com
 
 # Overrides for the 'web' role.
 hosts:
@@ -49,18 +50,7 @@ nameservers:
 zones:
   - canthack.it
   - gaughan.ie
-  - keithgaughan.co.uk
-  - keithgaughan.ie
-  - kick.ie
-  - libtls.com
-  - libtls.org
-  - questions.ie
-  - roguebeauty.org
   - stereochro.me
-  - systemsatelier.com
-  - talideon.eu
-  - wafflecopter.net
-  - zoicon.com
 
 # Zones that can send mail. I haven't set up DKIM public keys for all zones yet.
 mail_zones:
@@ -79,10 +69,10 @@ zone_cnames:
   canthack.it:
     i: "@"
   talideon.com:
-    mirrors: manann
-    dav: manann
+    mirrors: lir
+    dav: lir
     reader: eimhir
-    repos: manann
+    repos: lir
     webmail: eimhir
     home: talideon.duckdns.org.
   gaughan.ie:
