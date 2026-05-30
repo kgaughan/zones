@@ -12,16 +12,16 @@ $TTL	3600
 			NS	ns2.talideon.com.
 			NS	ns3.talideon.com.
 			NS	ns4.talideon.com.
-			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
-			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
+			A	{{ haddrs[hostnames.get(item, hroles.web)].ipv4 }}
+			AAAA	{{ haddrs[hostnames.get(item, hroles.web)].ipv6 }}
 			CAA	0 issue "letsencrypt.org"
+{% if item in site_verification %}
+			TXT	"google-site-verification={{ site_verification[item] }}"
+{% endif %}
 {% if item in mail_zones %}
 			MX	40 mail.talideon.com.
 			TXT	"v=spf1 a mx -all"
 			SPF	"v=spf1 a mx -all"
-{% if "postmaster_tools" in mail_zones[item] %}
-			TXT	"google-site-verification={{ mail_zones[item].postmaster_tools }}"
-{% endif %}
 {% if "pubkey" in mail_zones[item] %}
 default._domainkey	TXT	"v=DKIM1; k=rsa; p={{ mail_zones[item].pubkey }}"
 _dmarc			TXT	"v=DMARC1; p=quarantine; rua=mailto:abuse@{{ item }}; ruf=mailto:abuse@{{ item }}; adkim=r; aspf=r; rf=afrf"
@@ -37,8 +37,8 @@ default._domainkey	TXT     "v=DKIM1; p="
 _dmarc			TXT     "v=DMARC1; p=reject"
 {% endif %}
 
-www			A	{{ haddrs[hosts.get(item, hroles.web)].ipv4 }}
-www			AAAA	{{ haddrs[hosts.get(item, hroles.web)].ipv6 }}
+www			A	{{ haddrs[hostnames.get(item, hroles.web)].ipv4 }}
+www			AAAA	{{ haddrs[hostnames.get(item, hroles.web)].ipv6 }}
 {% for cname, dest in zone_cnames.get(item, {}).items() %}
 {{ cname }}		CNAME	{{ dest }}
 {% endfor %}
