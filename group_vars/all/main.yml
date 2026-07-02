@@ -21,6 +21,10 @@ haddrs:
     ipv6: 2a01:4f8:151:238f::2
     tsig: 5550e60c-681b-45c7-ad62-8f7d1eba56a3.talideon.com.
     secondary: true
+  fozzie.moybella.net:  # Niall's new server.
+    ipv4: 95.217.121.174
+    ipv6: 2a01:4f9:4a:36e6::2
+    secondary: true
   # https://dnsmgr.blacknight.ie/
   ns2.blacknightsolutions.com:
     ipv4: 78.153.202.4
